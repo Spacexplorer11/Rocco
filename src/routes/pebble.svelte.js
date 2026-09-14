@@ -1,9 +1,20 @@
 export const pebbles = $state({ value: 0 });
 
-export async function load_pebbles() {
+export function load_pebbles() {
 	if (typeof window === "undefined") return;
 	if (typeof localStorage === "undefined") return;
-	pebbles.value = Number(localStorage.getItem("pebbles"));
-	console.log("pebbles:" + pebbles.value);
-	return pebbles;
+	const stored = Number(localStorage.getItem("pebbles"));
+	pebbles.value = Number.isNaN(stored) ? 0 : stored;
+	console.log("Loaded pebbles:" + pebbles.value);
+}
+
+/** @returns {boolean} true if the purchase succeeded, false if insufficient funds */
+export function spend_pebbles(cost) {
+	if (pebbles.value >= cost) {
+		pebbles.value -= cost;
+		return true;
+	} else {
+		pebbles.value = 0;
+		return false;
+	}
 }
