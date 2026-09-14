@@ -21,7 +21,7 @@ export function load_pebbles() {
 }
 
 /** @returns {boolean} true if the purchase succeeded, false if insufficient funds */
-export function spend_pebbles(cost) {
+export function spend_pebbles(cost: number) {
 	if (Number.isNaN(cost) || !Number.isFinite(cost) || cost < 0) return false;
 	if (pebbles.value >= cost) {
 		pebbles.value -= cost;
