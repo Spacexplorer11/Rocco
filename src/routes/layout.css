@@ -4,9 +4,9 @@
 
 html,
 body {
-    background: linear-gradient(
-            to right,
-            #03fbff,
-            #035fff
-    );
+    @apply bg-[url(/images/background.webp)] bg-cover bg-fixed bg-center bg-no-repeat;
+}
+
+button {
+    cursor: grab;
 }
