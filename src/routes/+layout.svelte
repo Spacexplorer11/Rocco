@@ -2,6 +2,8 @@
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { pebbles } from "./pebble.svelte.ts";
+	import { initImageSupport } from "./items.svelte.ts";
+	import { onMount } from "svelte";
 
 	let { children } = $props();
 
@@ -14,6 +16,10 @@
 		} catch (error) {
 			console.error("An error occurred when saving the pebbles value");
 		}
+	});
+
+	onMount(async () => {
+		await initImageSupport();
 	});
 </script>
 
