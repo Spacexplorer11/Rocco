@@ -4,9 +4,9 @@
 
 html,
 body {
-    @apply bg-[url(/images/background.webp)] bg-cover bg-fixed bg-center bg-no-repeat;
+	@apply bg-[url(/images/background.webp)] bg-cover bg-fixed bg-center bg-no-repeat;
 }
 
 button {
-    cursor: grab;
+	cursor: grab;
 }

@@ -1,46 +1,47 @@
 <script>
-    let Name = $state("");
+	import { rock } from "./rock.svelte.ts";
 </script>
-<h1 class="text-center text-5xl text-gray-700">
-    Rocco
-</h1>
-<h2 class="text-center text-3xl text-amber-900">
-    Your little friend that rocks!
-</h2>
-<p>
-    .
-</p>
-<h3 class="text-center text-4xl text-white hover:animate-pulse p-40">Welcome to Rocco! What would you like to name your pet rock?</h3>
 
-<input class=" mx-auto text-gray-600 fill-black disabled:cursor-not-allowed rounded-4xl"
-        bind:value={Name} />
+<h1 class="text-center text-5xl text-gray-700">Rocco</h1>
+<h2 class="text-center text-3xl text-amber-900">Your little friend that rocks!</h2>
 
-<style>
-    main {
-        width: 100%;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100dvh;
-        padding: 20px;
-        box-sizing: border-box;
-    }
+<h3 class="p-40 text-center text-4xl text-white hover:animate-pulse">
+	Welcome to Rocco! What would you like to name your pet rock?
+</h3>
 
-    input {
-        width: 100%;
-        max-width: 750px;
-        padding: 20px 20px;
-        font-size: 1rem;
-        border: 2px solid #2D848A;
-        border-radius: 99999px;
-        outline: #267071 solid 2px;
-        background: #27812a;
-    }
-    </style>
-<div class=" mx-auto flex flex-col justify-center items-center text-center">
-    <button class="mx-auto text-center inline-block max-w-fit whitespace-normal my-1 text-3xl text-green-900 bg-linear-to-r from-[#2D848A] to-[#267071] p-[0.5em] rounded-4xl">
-        Confirm?
-    </button>
+<div class=" mx-auto flex flex-col items-center justify-center text-center">
+	<input maxlength="30"
+		class=" mx-auto rounded-4xl fill-black text-gray-600 disabled:cursor-not-allowed"
+		bind:value={rock.name}
+	/>
+
+	<style>
+		main {
+			width: 100%;
+			overflow-x: hidden;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			min-height: 100dvh;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		input {
+			width: 100%;
+			max-width: 750px;
+			padding: 20px 20px;
+			font-size: 1rem;
+			border: 2px solid #2d848a;
+			border-radius: 99999px;
+			outline: #267071 solid 2px;
+			background: #27812a;
+		}
+	</style>
+	<h2 class="text-center text-2xl text-amber-900">Note - rock name cannot be longer than 30 characters and cannot be blank</h2>
+
+	{#if rock.name != null}
+		<button class="m-20 text-2xl text-green-500 text-center">Confirm?</button>
+	{/if}
 </div>

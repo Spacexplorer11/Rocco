@@ -1,4 +1,4 @@
-export let rock = $state({ name: "" });
+export const rock = $state({ name: "" });
 
 export function save_rock_name() {
 	if (typeof window === "undefined") return;
