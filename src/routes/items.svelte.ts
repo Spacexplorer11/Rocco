@@ -73,13 +73,18 @@ class EquippableItem {
 	}
 
 	getPrettyStringified() {
-		return `{ id: ${this.id}, name: ${this.name}, price: ${this.price}, slot: ${this.slot}, asset_path: ${this.asset_path} }r`;
+		return `{ id: ${this.id}, name: ${this.name}, price: ${this.price}, slot: ${this.slot}, asset_path: ${this.asset_path} }`;
 	}
 }
 
-export const items: { possible_items: EquippableItem[]; bought_items: EquippableItem[] } = $state({
+export const items: {
+	possible_items: EquippableItem[];
+	bought_items: EquippableItem[];
+	equipped_items: EquippableItem[];
+} = $state({
 	possible_items: [new EquippableItem("top_hat", "Top Hat", 30, Slot.Head, "/items/top_hat")],
-	bought_items: []
+	bought_items: [],
+	equipped_items: []
 });
 
 export function load_bought_items() {
@@ -105,6 +110,33 @@ export function load_bought_items() {
 		);
 	} catch (error) {
 		console.error("An error occurred fetching the bought items from localStorage: ", error);
+		return;
+	}
+}
+
+export function load_equipped_items() {
+	if (typeof window === "undefined") return;
+	if (typeof localStorage === "undefined") return;
+	try {
+		let stored = localStorage.getItem("equipped_items") ?? "";
+		if (stored === "") return;
+		let parsed = JSON.parse(stored);
+		for (const item of parsed) {
+			items.equipped_items.push(
+				new EquippableItem(
+					item["id"],
+					item["name"],
+					Number(item["price"]),
+					item["slot"],
+					item["asset_path"]
+				)
+			);
+		}
+		console.log(
+			`Loaded equipped items: [${items.equipped_items.map((item) => item.getPrettyStringified()).join(",")}]`
+		);
+	} catch (error) {
+		console.error("An error occurred fetching the equipped items from localStorage: ", error);
 		return;
 	}
 }

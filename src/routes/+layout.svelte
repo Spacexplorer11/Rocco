@@ -2,7 +2,7 @@
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { pebbles } from "./pebble.svelte.ts";
-    import { initImageSupport, items } from "./items.svelte.ts";
+	import { initImageSupport, items } from "./items.svelte.ts";
 	import { onMount } from "svelte";
 
 	let { children } = $props();
@@ -18,18 +18,31 @@
 		}
 	});
 
-    $effect(() => {
-        if (typeof window === "undefined") return;
-        if (typeof localStorage === "undefined") return;
-        try {
-            localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
-            console.log(
-                `Saved bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`
-            );
-        } catch (error) {
-            console.error("An error occurred when saving the bought_items: ", error);
-        }
-    });
+	$effect(() => {
+		if (typeof window === "undefined") return;
+		if (typeof localStorage === "undefined") return;
+		try {
+			localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
+			console.log(
+				`Saved bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`
+			);
+		} catch (error) {
+			console.error("An error occurred when saving the bought items: ", error);
+		}
+	});
+
+	$effect(() => {
+		if (typeof window === "undefined") return;
+		if (typeof localStorage === "undefined") return;
+		try {
+			localStorage.setItem("equipped_items", JSON.stringify(items.equipped_items));
+			console.log(
+				`Saved equipped items: [${items.equipped_items.map((item) => item.getPrettyStringified()).join(",")}]`
+			);
+		} catch (error) {
+			console.error("An error occurred when saving the equipped items: ", error);
+		}
+	});
 
 	onMount(async () => {
 		await initImageSupport();
