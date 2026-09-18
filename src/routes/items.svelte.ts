@@ -42,10 +42,10 @@ class EquippableItem {
 		}
 		if (typeof slot == "string") {
 			switch (slot.toLowerCase()) {
-				case "head":
+				case "0":
 					this.slot = Slot.Head;
 					break;
-				case "neck":
+				case "1":
 					this.slot = Slot.Neck;
 					break;
 				default:
