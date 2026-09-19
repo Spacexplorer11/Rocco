@@ -52,7 +52,6 @@
 	});
 
 	onMount(async () => {
-		await initImageSupport();
 		load_pebbles();
 		load_bought_items();
 		load_equipped_items();
@@ -64,6 +63,7 @@
 		console.log(
 			`Loaded possible items: [${items.possible_items.map((item) => item.getPrettyStringified()).join(",")}]`
 		);
+		await initImageSupport();
 	});
 </script>
 
