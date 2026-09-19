@@ -126,15 +126,7 @@ export function load_equipped_items() {
 		if (stored === "") return;
 		let parsed = JSON.parse(stored);
 		for (const item of parsed) {
-			items.equipped_items.push(
-				new EquippableItem(
-					item["id"],
-					item["name"],
-					Number(item["price"]),
-					item["slot"],
-					item["asset_path"]
-				)
-			);
+			items.equipped_items.push(EquippableItem.fromJSON(item));
 		}
 		console.log(
 			`Loaded equipped items: [${items.equipped_items.map((item) => item.getPrettyStringified()).join(",")}]`
