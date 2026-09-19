@@ -8,7 +8,7 @@ export function load_pebbles() {
 	try {
 		stored = Number(localStorage.getItem("pebbles"));
 	} catch (error) {
-		console.error("An error occurred fetching the pebbles value from localStorage");
+		console.error("An error occurred fetching the pebbles value from localStorage: ", error);
 		return;
 	}
 	if (Number.isNaN(stored) || !Number.isFinite(stored) || stored < 0) {
