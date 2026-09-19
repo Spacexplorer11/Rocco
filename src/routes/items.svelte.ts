@@ -28,36 +28,23 @@ export async function initImageSupport(): Promise<void> {
 
 // -----------------------------
 
-class EquippableItem {
+export class EquippableItem {
 	id: string;
 	name: string;
 	price: number;
 	slot: Slot;
 	asset_path: string;
 
-	constructor(id: string, name: string, price: number, slot: Slot | string, asset_path: string) {
+	constructor(id: string, name: string, price: number, slot: Slot, asset_path: string) {
 		// Why? When displaying it will use the png, webp and avif combo.
 		if (/\.\w+$/.test(asset_path)) {
 			throw new Error(`asset_path must not include a file extension: ${asset_path}`);
-		}
-		if (typeof slot == "string") {
-			switch (slot.toLowerCase()) {
-				case "0":
-					this.slot = Slot.Head;
-					break;
-				case "1":
-					this.slot = Slot.Neck;
-					break;
-				default:
-					throw new Error(`Unsupported slot type: ${slot}`);
-			}
-		} else {
-			this.slot = slot;
 		}
 
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.slot = slot;
 		this.asset_path = asset_path;
 	}
 
@@ -75,6 +62,27 @@ class EquippableItem {
 	getPrettyStringified() {
 		return `{ id: ${this.id}, name: ${this.name}, price: ${this.price}, slot: ${this.slot}, asset_path: ${this.asset_path} }`;
 	}
+
+	static fromJSON(JSON: any): EquippableItem {
+		let slot = JSON["slot"];
+		switch (slot.toLowerCase()) {
+			case "0":
+				slot = Slot.Head;
+				break;
+			case "1":
+				slot = Slot.Neck;
+				break;
+			default:
+				throw new Error(`Unsupported slot type: ${slot}`);
+		}
+		return new EquippableItem(
+			JSON["id"],
+			JSON["name"],
+			Number(JSON["price"]),
+			slot,
+			JSON["asset_path"]
+		);
+	}
 }
 
 export const items: {
@@ -82,7 +90,7 @@ export const items: {
 	bought_items: EquippableItem[];
 	equipped_items: EquippableItem[];
 } = $state({
-	possible_items: [new EquippableItem("top_hat", "Top Hat", 30, Slot.Head, "/items/top_hat")],
+	possible_items: [],
 	bought_items: [],
 	equipped_items: []
 });
@@ -95,15 +103,7 @@ export function load_bought_items() {
 		if (stored === "") return;
 		let parsed = JSON.parse(stored);
 		for (const item of parsed) {
-			items.bought_items.push(
-				new EquippableItem(
-					item["id"],
-					item["name"],
-					Number(item["price"]),
-					item["slot"],
-					item["asset_path"]
-				)
-			);
+			items.bought_items.push(EquippableItem.fromJSON(item));
 		}
 		console.log(
 			`Loaded bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`
