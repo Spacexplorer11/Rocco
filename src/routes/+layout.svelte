@@ -1,9 +1,16 @@
 <script lang="ts">
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
-	import { pebbles } from "./pebble.svelte.ts";
-	import { initImageSupport, items } from "./items.svelte.ts";
+	import { pebbles, load_pebbles } from "$lib/handlers/pebbles.svelte";
+	import {
+		initImageSupport,
+		EquippableItem,
+		items,
+		load_bought_items,
+		load_equipped_items
+	} from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
+	import possible_items from "$lib/items/possible_items.json";
 
 	let { children } = $props();
 
@@ -46,6 +53,17 @@
 
 	onMount(async () => {
 		await initImageSupport();
+		load_pebbles();
+		load_bought_items();
+		load_equipped_items();
+		for (const item of possible_items) {
+			let parsed_item = EquippableItem.fromJSON(item);
+			if (items.possible_items.includes(parsed_item)) continue;
+			items.possible_items.push(parsed_item);
+		}
+		console.log(
+			`Loaded possible items: [${items.possible_items.map((item) => item.getPrettyStringified()).join(",")}]`
+		);
 	});
 </script>
 

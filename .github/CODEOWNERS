@@ -1,2 +1,1 @@
-src/routes/+layout.ts @spacexplorer11
-src/routes/pebble.svelte.ts @spacexplorer11
+../src/lib/handlers/* @spacexplorer11

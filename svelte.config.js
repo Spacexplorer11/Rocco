@@ -13,7 +13,13 @@ const config = {
 		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 		adapter: adapter(),
 		version: {
-			name: child_process.execSync("git rev-parse HEAD").toString().trim()
+			name: (() => {
+				try {
+					return child_process.execSync("git rev-parse HEAD", { encoding: "utf8" }).trim();
+				} catch {
+					return process.env.WORKERS_CI_COMMIT_SHA ?? Date.now().toString();
+				}
+			})()
 		}
 	}
 };

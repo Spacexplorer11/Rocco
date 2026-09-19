@@ -65,6 +65,10 @@ export class EquippableItem {
 
 	static fromJSON(JSON: any): EquippableItem {
 		let slot = JSON["slot"];
+		if (typeof slot === "number") slot = String(slot);
+		if (typeof slot !== "string") {
+			throw new Error(`Unsupported slot type: ${slot}`);
+		}
 		switch (slot.toLowerCase()) {
 			case "0":
 				slot = Slot.Head;
