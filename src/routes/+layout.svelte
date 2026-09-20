@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
-	import { pebbles, load_pebbles, decrease_pebbles } from "$lib/handlers/pebbles.svelte";
+	import { pebbles, load_pebbles, increase_pebbles } from "$lib/handlers/pebbles.svelte";
 	import {
 		initImageSupport,
 		EquippableItem,
@@ -56,10 +56,16 @@
 		rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
 	});
 
-	setInterval(decrease_affection, 15000);
-	setInterval(decrease_nutrition, 25000);
-	setInterval(decrease_pebbles, 30000);
-
+	onMount(() => {
+		const affectionInterval = setInterval(decrease_affection, 15000);
+		const nutritionInterval = setInterval(decrease_nutrition, 25000);
+		const pebblesInterval = setInterval(increase_pebbles, 30000);
+		return () => {
+			clearInterval(affectionInterval);
+			clearInterval(nutritionInterval);
+			clearInterval(pebblesInterval);
+		};
+	});
 	onMount(async () => {
 		load_pebbles();
 		load_bought_items();

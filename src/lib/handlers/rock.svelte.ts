@@ -21,23 +21,30 @@ export function decrease_nutrition() {
 	}
 }
 
-export function save_rock_name() {
+export function save_rock() {
 	if (typeof window === "undefined") return;
 	if (typeof localStorage === "undefined") return;
 	try {
-		localStorage.setItem("rock_name", rock.name);
-		console.log("Successfully saved rock name as ", rock.name);
+		localStorage.setItem("rock", JSON.stringify(rock));
+		console.log("Successfully saved rock as ", rock);
 	} catch (error) {
 		console.error("An error occurred when saving the rock name");
 	}
 }
 
-export function load_rock_name() {
+export function load_rock() {
 	if (typeof window === "undefined") return;
 	if (typeof localStorage === "undefined") return;
 	try {
-		rock.name = localStorage.getItem("rock_name") ?? "";
-		console.log("Successfully loaded rock name as ", rock.name);
+		let stored = localStorage.getItem("rock");
+		if (typeof stored === "string") {
+			let parsed = JSON.parse(stored);
+			rock.name = parsed["name"];
+			rock.happiness.affection = parsed["affection"];
+			rock.happiness.nutrition = parsed["nutrition"];
+			rock.happiness.total = parsed["total"];
+			console.log("Successfully loaded rock name as ", rock.name);
+		}
 	} catch (error) {
 		console.error("An error occurred when saving the rock name");
 	}

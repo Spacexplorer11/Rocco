@@ -2,7 +2,7 @@ import { rock } from "$lib/handlers/rock.svelte";
 
 export const pebbles = $state({ value: 0 });
 
-export function decrease_pebbles() {
+export function increase_pebbles() {
 	if (rock.happiness.total > 95) {
 		pebbles.value += 1;
 	}
