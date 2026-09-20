@@ -1,5 +1,6 @@
 <script>
 	import { rock } from "./rock.svelte.ts";
+	import { goto } from "$app/navigation";
 </script>
 
 <h1 class="text-center text-5xl text-gray-700">Rocco</h1>
@@ -11,16 +12,19 @@
 <div class=" mx-auto flex flex-col items-center justify-center text-center">
 	<input
 		maxlength="30"
-		class=" mx-auto rounded-4xl fill-black text-gray-600 disabled:cursor-not-allowed"
+		class=" mx-auto rounded-4xl fill-black text-white disabled:cursor-not-allowed"
 		id="rock-name-input"
 		bind:value={rock.name}
 	/>
-	<label for="rock-name-input" class="text-center text-2xl text-red-400"
+	<label for="rock-name-input" class="text-center text-2xl text-amber-600"
 		>Note - rock name cannot be longer than 30 characters and cannot be blank</label
 	>
 
 	{#if rock.name.trim().length > 0}
-		<button class="m-20 text-center text-2xl text-green-500">Confirm?</button>
+		<button
+			class="m-20 bg-linear-to-r from-[#63A46C] to-[#16DB93] text-center text-2xl text-green-500"
+			onclick={() => goto("/home")}>Confirm?</button
+		>
 	{/if}
 </div>
 
