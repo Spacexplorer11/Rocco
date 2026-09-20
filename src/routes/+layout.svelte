@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
-	import { pebbles, load_pebbles } from "$lib/handlers/pebbles.svelte";
+	import { pebbles, load_pebbles, decrease_pebbles } from "$lib/handlers/pebbles.svelte";
 	import {
 		initImageSupport,
 		EquippableItem,
@@ -58,6 +58,7 @@
 
 	setInterval(decrease_affection, 15000);
 	setInterval(decrease_nutrition, 25000);
+	setInterval(decrease_pebbles, 30000);
 
 	onMount(async () => {
 		load_pebbles();
