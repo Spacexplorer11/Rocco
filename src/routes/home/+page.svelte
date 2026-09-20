@@ -1,29 +1,26 @@
 <script>
-	let happy = $state(12);
 	import { rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
-	let affection = $state(66);
-	let nutrition = $state(25);
 </script>
 
 <h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name}</h1>
 <div class="flex flex-row justify-between">
 	<div class="flex w-full flex-col items-center justify-center">
-		<span class="mb-2 text-3xl text-yellow-400">Happiness - {happy}</span>
+		<span class="mb-2 text-3xl text-yellow-400">Happiness - {rock.happiness.total}</span>
 		<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
-			<div class="h-full bg-yellow-400" style="width: {happy}%;"></div>
+			<div class="h-full bg-yellow-400" style="width: {rock.happiness.total}%;"></div>
 		</div>
 	</div>
 	<div class="flex w-full flex-col items-center justify-center">
-		<span class="mb-2 text-3xl text-pink-600">Affection - {affection}</span>
+		<span class="mb-2 text-3xl text-pink-600">Affection - {rock.happiness.affection}</span>
 		<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
-			<div class="h-full bg-pink-600" style="width: {affection}%;"></div>
+			<div class="h-full bg-pink-600" style="width: {rock.happiness.affection}%;"></div>
 		</div>
 	</div>
 	<div class="flex w-full flex-col items-center justify-center">
-		<span class="mb-2 text-3xl text-blue-500">Nutrition - {nutrition}</span>
+		<span class="mb-2 text-3xl text-blue-500">Nutrition - {rock.happiness.nutrition}</span>
 		<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
-			<div class="h-full bg-blue-500" style="width: {nutrition}%;"></div>
+			<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
 		</div>
 	</div>
 </div>

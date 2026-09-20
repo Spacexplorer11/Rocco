@@ -1,9 +1,9 @@
 export const rock = $state({
 	name: "",
 	happiness: {
-		affection: 0,
-		nutrition: 0,
-		total: 0
+		affection: 100,
+		nutrition: 100,
+		total: 100
 	}
 });
 
