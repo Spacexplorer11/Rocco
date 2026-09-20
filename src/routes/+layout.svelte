@@ -2,13 +2,7 @@
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
 	import { pebbles, load_pebbles, increase_pebbles } from "$lib/handlers/pebbles.svelte";
-	import {
-		initImageSupport,
-		EquippableItem,
-		items,
-		load_bought_items,
-		load_equipped_items
-	} from "$lib/handlers/items.svelte";
+	import { EquippableItem, items, load_bought_items, load_equipped_items } from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
 	import possible_items from "$lib/items/possible_items.json";
 	import { decrease_affection, decrease_nutrition, rock } from "$lib/handlers/rock.svelte";
@@ -76,13 +70,13 @@
 		console.log(
 			`Loaded possible items: [${items.possible_items.map((item) => item.getPrettyStringified()).join(",")}]`
 		);
-		await initImageSupport();
 	});
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div id="national-park">
+	<enhanced:img src="$lib/images/background.png" alt="" id="background" sizes="100vw" />
 	{@render children()}
 </div>
 
@@ -94,5 +88,28 @@
 		font-optical-sizing: auto;
 		font-weight: 600;
 		font-style: oblique;
+	}
+
+	#background {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: -1;
+	}
+
+	:global(html),
+	:global(body) {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		margin: 0;
+		box-sizing: border-box;
+		overflow-x: hidden;
+		padding: 0;
+		height: 100%;
+		width: 100%;
+		overscroll-behavior: none;
 	}
 </style>

@@ -35,10 +35,10 @@
 	}}>Food</button
 >
 
-<button class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal">
-	<img
+<button class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal" title="Your rock {rock.name}">
+	<enhanced:img
 		alt="Rocco!"
-		src="images/rocco.png"
+		src="$lib/images/rocco.png"
 		onclick={() => {
 			if (rock.happiness.affection < 100) {
 				rock.happiness.affection += 1;

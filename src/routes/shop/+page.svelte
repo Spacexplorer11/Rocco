@@ -1,6 +1,7 @@
 <script>
 	import { pebbles } from "$lib/handlers/pebbles.svelte";
 	import { goto } from "$app/navigation";
+	import { EquippableItem, items, Slot } from "$lib/handlers/items.svelte";
 </script>
 
 <h1 class="text-center text-5xl text-black">Shop: You have {pebbles.value} pebbles</h1>
@@ -10,15 +11,16 @@
 	onclick={() => goto("/home")}>Back</button
 >
 
-<button class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal">
-	<img
+<button class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal" title="Top Hat">
+	<enhanced:img
 		alt="Top Hat"
-		src="images/top-hat.png"
+		src="$lib/images/top-hat.png"
 		onclick={() => {
-			if (pebbles.value > 5) {
-				pebbles.value -= 5;
+			if (pebbles.value > 30) {
+				pebbles.value -= 30;
+				items.bought_items.push(new EquippableItem("top_hat", "Top Hat", 30, Slot.Head, "$lib/images/top-hat.png"));
 			}
 		}}
 	/>
 </button>
-<p class="text-center text-3xl text-black">Top Hat - 5 pebbles</p>
+<p class="text-center text-3xl text-black">Top Hat - 30 pebbles</p>
