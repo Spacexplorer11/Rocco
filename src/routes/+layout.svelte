@@ -1,7 +1,7 @@
 <script lang="ts">
 	import "./layout.css";
 	import favicon from "$lib/assets/favicon.svg";
-	import { pebbles, load_pebbles } from "$lib/handlers/pebbles.svelte";
+	import { pebbles, load_pebbles, increase_pebbles } from "$lib/handlers/pebbles.svelte";
 	import {
 		initImageSupport,
 		EquippableItem,
@@ -11,6 +11,7 @@
 	} from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
 	import possible_items from "$lib/items/possible_items.json";
+	import { decrease_affection, decrease_nutrition, rock } from "$lib/handlers/rock.svelte";
 
 	let { children } = $props();
 
@@ -51,6 +52,20 @@
 		}
 	});
 
+	$effect(() => {
+		rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
+	});
+
+	onMount(() => {
+		const affectionInterval = setInterval(decrease_affection, 15000);
+		const nutritionInterval = setInterval(decrease_nutrition, 25000);
+		const pebblesInterval = setInterval(increase_pebbles, 30000);
+		return () => {
+			clearInterval(affectionInterval);
+			clearInterval(nutritionInterval);
+			clearInterval(pebblesInterval);
+		};
+	});
 	onMount(async () => {
 		load_pebbles();
 		load_bought_items();

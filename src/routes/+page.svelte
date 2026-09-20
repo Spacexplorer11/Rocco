@@ -1,5 +1,5 @@
 <script>
-	import { rock } from "./rock.svelte.ts";
+	import { rock } from "$lib/handlers/rock.svelte";
 </script>
 
 <h1 class="text-center text-5xl text-gray-700">Rocco</h1>
