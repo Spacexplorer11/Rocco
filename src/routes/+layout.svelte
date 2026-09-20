@@ -11,6 +11,7 @@
 	} from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
 	import possible_items from "$lib/items/possible_items.json";
+	import { decrease_affection, decrease_nutrition, rock } from "$lib/handlers/rock.svelte";
 
 	let { children } = $props();
 
@@ -50,6 +51,13 @@
 			console.error("An error occurred when saving the equipped items: ", error);
 		}
 	});
+
+	$effect(() => {
+		rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
+	});
+
+	setInterval(decrease_affection, 15000);
+	setInterval(decrease_nutrition, 25000);
 
 	onMount(async () => {
 		load_pebbles();
