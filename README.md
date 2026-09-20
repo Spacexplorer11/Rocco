@@ -12,7 +12,7 @@ You can access it at https://rocco.akaalroop.com!
 
 1. You are first asked to name your rock (must be 30 characters or under).
 2. You will begin losing affectional & nutritional happiness every 5s & 7.5s respectively. This will decrease your total happiness as they are both weighted equally (affection gives 50% of total and so does nutrition).
-3. If your total happiness stays above 95 then you will get 1 pebble every 30s.
+3. If your total happiness stays above 95 then you will get 1 pebble every 20s.
 
 > [!Warning]
 > This game does not work offline so if you close the tab you will not gain or lose anything. You will retain all your data as it is stored in localStorage.

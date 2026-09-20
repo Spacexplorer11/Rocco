@@ -1,6 +1,14 @@
 <script>
-	import { rock } from "$lib/handlers/rock.svelte";
+	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
+	import { onMount } from "svelte";
+
+	onMount(() => {
+		load_rock();
+		if (rock.name.trim().length > 0) {
+			goto("/home");
+		}
+	});
 </script>
 
 <h1 class="text-center text-5xl text-gray-700">Rocco</h1>
@@ -24,11 +32,11 @@
 	{#if rock.name.trim().length > 0}
 		<button
 			class="m-20 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center text-2xl text-blue-800"
-			onclick={() => goto("/home")}
-			onkeydown={(event) => {
-				if (event.key === "Enter") {
-					goto("/home");
-				}
+			onclick={() => {
+				rock.happiness.total = 100;
+				rock.happiness.affection = 100;
+				rock.happiness.nutrition = 100;
+				goto("/home");
 			}}>Confirm?</button
 		>
 	{/if}

@@ -1,6 +1,14 @@
 <script>
-	import { rock } from "$lib/handlers/rock.svelte";
+	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
+	import { onMount } from "svelte";
+
+	onMount(() => {
+		load_rock();
+		if (rock.name.trim().length === 0) {
+			goto("/");
+		}
+	});
 </script>
 
 <h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name}</h1>
@@ -24,10 +32,10 @@
 		</div>
 	</div>
 </div>
-<p class="ml-156 flex flex-row text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
+<p class="mx-[40vw] flex flex-row text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
 
 <button
-	class="justify-right ml-325 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
+	class="justify-right ml-[70vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
 	onclick={() => {
 		if (rock.happiness.nutrition < 100) {
 			rock.happiness.nutrition += 1;

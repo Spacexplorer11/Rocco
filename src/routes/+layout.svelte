@@ -5,7 +5,7 @@
 	import { EquippableItem, items, load_bought_items, load_equipped_items } from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
 	import possible_items from "$lib/items/possible_items.json";
-	import { decrease_affection, decrease_nutrition, rock } from "$lib/handlers/rock.svelte";
+	import { decrease_affection, decrease_nutrition, load_rock, rock, save_rock } from "$lib/handlers/rock.svelte";
 
 	let { children } = $props();
 
@@ -48,6 +48,10 @@
 		rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
 	});
 
+	$effect(() => {
+		save_rock();
+	});
+
 	onMount(() => {
 		const affectionInterval = setInterval(decrease_affection, 5000);
 		const nutritionInterval = setInterval(decrease_nutrition, 7500);
@@ -59,6 +63,7 @@
 		};
 	});
 	onMount(async () => {
+		load_rock();
 		load_pebbles();
 		load_bought_items();
 		load_equipped_items();

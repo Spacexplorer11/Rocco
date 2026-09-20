@@ -40,10 +40,10 @@ export function load_rock() {
 		if (typeof stored === "string") {
 			let parsed = JSON.parse(stored);
 			rock.name = parsed["name"];
-			rock.happiness.affection = parsed["affection"];
-			rock.happiness.nutrition = parsed["nutrition"];
-			rock.happiness.total = parsed["total"];
-			console.log("Successfully loaded rock name as ", rock.name);
+			rock.happiness.affection = parsed["happiness"]["affection"];
+			rock.happiness.nutrition = parsed["happiness"]["nutrition"];
+			rock.happiness.total = parsed["happiness"]["total"];
+			console.log("Successfully loaded rock as ", JSON.stringify(rock));
 		}
 	} catch (error) {
 		console.error("An error occurred when saving the rock name");
