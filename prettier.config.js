@@ -3,7 +3,7 @@ const config = {
 	useTabs: true,
 	singleQuote: false,
 	trailingComma: "none",
-	printWidth: 100,
+	printWidth: 120,
 	plugins: ["prettier-plugin-svelte", "prettier-plugin-tailwindcss"],
 	overrides: [{ files: "*.svelte", options: { parser: "svelte" } }],
 	tailwindStylesheet: "./src/routes/layout.css"
