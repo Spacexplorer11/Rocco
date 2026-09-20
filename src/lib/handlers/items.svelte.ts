@@ -79,13 +79,7 @@ export class EquippableItem {
 			default:
 				throw new Error(`Unsupported slot type: ${slot}`);
 		}
-		return new EquippableItem(
-			JSON["id"],
-			JSON["name"],
-			Number(JSON["price"]),
-			slot,
-			JSON["asset_path"]
-		);
+		return new EquippableItem(JSON["id"], JSON["name"], Number(JSON["price"]), slot, JSON["asset_path"]);
 	}
 }
 
@@ -109,9 +103,7 @@ export function load_bought_items() {
 		for (const item of parsed) {
 			items.bought_items.push(EquippableItem.fromJSON(item));
 		}
-		console.log(
-			`Loaded bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`
-		);
+		console.log(`Loaded bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`);
 	} catch (error) {
 		console.error("An error occurred fetching the bought items from localStorage: ", error);
 		return;

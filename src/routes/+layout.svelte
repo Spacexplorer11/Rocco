@@ -31,9 +31,7 @@
 		if (typeof localStorage === "undefined") return;
 		try {
 			localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
-			console.log(
-				`Saved bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`
-			);
+			console.log(`Saved bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`);
 		} catch (error) {
 			console.error("An error occurred when saving the bought items: ", error);
 		}
@@ -59,7 +57,7 @@
 	onMount(() => {
 		const affectionInterval = setInterval(decrease_affection, 5000);
 		const nutritionInterval = setInterval(decrease_nutrition, 7500);
-		const pebblesInterval = setInterval(increase_pebbles, 30000);
+		const pebblesInterval = setInterval(increase_pebbles, 20000);
 		return () => {
 			clearInterval(affectionInterval);
 			clearInterval(nutritionInterval);
