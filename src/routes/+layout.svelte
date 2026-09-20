@@ -57,8 +57,8 @@
 	});
 
 	onMount(() => {
-		const affectionInterval = setInterval(decrease_affection, 15000);
-		const nutritionInterval = setInterval(decrease_nutrition, 25000);
+		const affectionInterval = setInterval(decrease_affection, 5000);
+		const nutritionInterval = setInterval(decrease_nutrition, 7500);
 		const pebblesInterval = setInterval(increase_pebbles, 30000);
 		return () => {
 			clearInterval(affectionInterval);

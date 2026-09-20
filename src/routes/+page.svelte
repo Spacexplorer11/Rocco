@@ -26,7 +26,6 @@
 			class="m-20 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center text-2xl text-blue-800"
 			onclick={() => goto("/home")}>Confirm?</button
 		>
-		>
 	{/if}
 </div>
 
