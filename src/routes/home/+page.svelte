@@ -24,9 +24,7 @@
 		</div>
 	</div>
 </div>
-<p class="ml-155 flex flex-row text-center text-3xl whitespace-normal">
-	Click on the rock to pet it
-</p>
+<p class="ml-155 flex flex-row text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
 
 <button
 	class="justify-right ml-325 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
