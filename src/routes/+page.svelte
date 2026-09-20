@@ -1,5 +1,5 @@
 <script>
-	import { rock } from "./rock.svelte.ts";
+	import { rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 </script>
 
@@ -14,10 +14,6 @@
 	<input
 		maxlength="30"
 		class=" mx-auto rounded-4xl fill-black text-white disabled:cursor-not-allowed"
-	/>
-	<input
-		maxlength="30"
-		class=" mx-auto rounded-4xl fill-black text-white disabled:cursor-not-allowed"
 		id="rock-name-input"
 		bind:value={rock.name}
 	/>
@@ -27,8 +23,9 @@
 
 	{#if rock.name.trim().length > 0}
 		<button
-			class="m-20 bg-linear-to-r from-[#63A46C] to-[#16DB93] text-center text-2xl text-green-500"
+			class="m-20 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center text-2xl text-yellow-400"
 			onclick={() => goto("/home")}>Confirm?</button
+		>
 		>
 	{/if}
 </div>

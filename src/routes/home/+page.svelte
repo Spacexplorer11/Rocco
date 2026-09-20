@@ -1,12 +1,12 @@
 <script>
 	let happy = $state(12);
-	import { rock } from "../rock.svelte.ts";
+	import { rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 	let affection = $state(66);
 	let nutrition = $state(25);
 </script>
 
-<h1 class=" flex flex-row gap-4 text-center text-4xl text-black">{rock.name}</h1>
+<h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name}</h1>
 <div class="flex flex-row justify-between">
 	<div class="flex w-full flex-col items-center justify-center">
 		<span class="mb-2 text-3xl text-yellow-400">Happiness - {happy}</span>
@@ -38,6 +38,6 @@
 	>
 	<button
 		class="mt-52 mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
-		>Settings</button
+		onclick={() => goto("/settings")}>Settings</button
 	>
 </div>
