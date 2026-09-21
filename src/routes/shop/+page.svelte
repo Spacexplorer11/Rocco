@@ -22,14 +22,12 @@
 
 <button
 	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
-	title="Top Hat"
 	onclick={() => {
-		if (pebbles.value >= 30) {
-			pebbles.value -= 30;
-			items.bought_items.push(new EquippableItem("top_hat", "Top Hat", 30, Slot.Head, "$lib/images/top-hat.png"));
+		if (pebbles.value > 5) {
+			pebbles.value -= 5;
 		}
 	}}
 >
-	<enhanced:img alt="Top Hat" src="$lib/images/top-hat.png" />
+	<img alt="Top Hat" src="images/top-hat.png" />
 </button>
 <p class="text-center text-3xl text-black">Top Hat - 30 pebbles</p>
