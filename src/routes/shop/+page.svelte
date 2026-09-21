@@ -10,15 +10,14 @@
 	onclick={() => goto("/home")}>Back</button
 >
 
-<button class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal">
-	<img
-		alt="Top Hat"
-		src="images/top-hat.png"
-		onclick={() => {
-			if (pebbles.value > 5) {
-				pebbles.value -= 5;
-			}
-		}}
-	/>
+<button
+	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
+	onclick={() => {
+		if (pebbles.value > 5) {
+			pebbles.value -= 5;
+		}
+	}}
+>
+	<img alt="Top Hat" src="images/top-hat.png" />
 </button>
 <p class="text-center text-3xl text-black">Top Hat - 5 pebbles</p>
