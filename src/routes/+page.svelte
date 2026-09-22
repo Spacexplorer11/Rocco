@@ -27,6 +27,12 @@
 			onclick={() => goto("/home")}>Confirm?</button
 		>
 	{/if}
+
+	<button
+		class="mt-25 mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		onclick={() => goto("/guide")}
+		>Guide
+	</button>
 </div>
 
 <style>
