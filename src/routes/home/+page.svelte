@@ -33,16 +33,18 @@
 		</div>
 	</div>
 </div>
-<p class="mx-[40vw] flex flex-row text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
+<div class="flex flex-row">
+	<p class=" mr-[15vw] ml-[36vw] text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
 
-<button
-	class="justify-right ml-[80vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
-	onclick={() => {
-		if (rock.happiness.nutrition < 100) {
-			rock.happiness.nutrition += 1;
-		}
-	}}>Food</button
->
+	<button
+		class="justify-right rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
+		onclick={() => {
+			if (rock.happiness.nutrition < 100) {
+				rock.happiness.nutrition += 1;
+			}
+		}}>Food</button
+	>
+</div>
 
 <button
 	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
@@ -62,7 +64,7 @@
 		onclick={() => goto("/shop")}>Go to shop</button
 	>
 	<button
-		class="mt-25 mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		class="mt-25 mr-[1vw] mb-auto rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
 		onclick={() => goto("/settings")}>Settings</button
 	>
 </div>
