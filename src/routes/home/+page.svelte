@@ -27,9 +27,9 @@
 		</div>
 	</div>
 	<div class="flex w-full flex-col items-center justify-center">
-		<span class="mb-2 text-3xl text-blue-500">Nutrition = {rock.happiness.nutrition}</span>
+		<span class="mb-2 text-3xl text-blue-600">Nutrition = {rock.happiness.nutrition}</span>
 		<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
-			<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
+			<div class="h-full bg-blue-600" style="width: {rock.happiness.nutrition}%;"></div>
 		</div>
 	</div>
 </div>
@@ -58,16 +58,16 @@
 
 <div class="flex flex-row">
 	<button
-		class="mt-25 mr-[37vw] ml-[1vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
+		class="mt-[25mv] mr-[37vw] ml-[1vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
 		onclick={() => goto("/shop")}
 		>Go to shop
 	</button>
 	<button
-		class="mt-25 mr-[37vw] mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-center"
-		>Pebbles:{pebbles.value}
+		class="mt-[25mv] mr-[37vw] mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-center"
+		>Pebbles = {pebbles.value}
 	</button>
 	<button
-		class="mt-25 mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		class="mt-[25mv] mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
 		onclick={() => goto("/settings")}
 		>Settings
 	</button>
