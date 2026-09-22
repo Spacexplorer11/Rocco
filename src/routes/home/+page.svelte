@@ -2,6 +2,7 @@
 	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
+	import rocco from "$lib/assets/rocco.png";
 
 	onMount(() => {
 		load_rock();
@@ -35,7 +36,7 @@
 <p class="mx-[40vw] flex flex-row text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
 
 <button
-	class="justify-right ml-[70vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
+	class="justify-right ml-[80vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-right text-3xl"
 	onclick={() => {
 		if (rock.happiness.nutrition < 100) {
 			rock.happiness.nutrition += 1;
@@ -52,7 +53,7 @@
 		}
 	}}
 >
-	<enhanced:img alt="Rocco!" src="$lib/images/rocco.png" />
+	<enhanced:img alt="Rocco!" src={rocco} />
 </button>
 
 <div class="flex flex-row">

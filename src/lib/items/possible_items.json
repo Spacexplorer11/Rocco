@@ -1,9 +1,9 @@
 [
 	{
-		"id": "top_hat",
+		"id": "top-hat",
 		"name": "Top Hat",
 		"price": 30,
 		"slot": "0",
-		"asset_path": "/items/top_hat"
+		"asset_path": "/images/items/top-hat.webp"
 	}
 ]
