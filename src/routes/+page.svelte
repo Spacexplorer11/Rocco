@@ -42,7 +42,7 @@
 	{/if}
 
 	<button
-		class="mt-25 mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		class="justify-right mt-auto mb-auto ml-auto rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] object-bottom-right p-5 text-right"
 		onclick={() => goto("/guide")}
 		>Guide
 	</button>
