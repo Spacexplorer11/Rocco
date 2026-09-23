@@ -5,6 +5,7 @@
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { Undo2 } from "@lucide/svelte";
+	import { EquippableItem } from "$lib/handlers/items.svelte.ts";
 
 	onMount(() => {
 		load_rock();
@@ -46,7 +47,7 @@
 				class="mx-auto justify-center rounded-4xl p-4 text-center active:bg-linear-to-r active:from-[#63A46C] active:to-[#16DB93] disabled:cursor-not-allowed disabled:bg-gray-400"
 				id={item.id}
 				title="Buy {item.name} for {item.price} pebbles"
-				disabled={items.bought_items.includes(item) || pebbles.value < item.price}
+				disabled={EquippableItem.includes(items.bought_items, item) || pebbles.value < item.price}
 				onclick={() => {
 					if (pebbles.value >= item.price) {
 						pebbles.value -= item.price;
@@ -55,7 +56,7 @@
 					}
 				}}
 			>
-				{items.bought_items.includes(item)
+				{EquippableItem.includes(items.bought_items, item)
 					? "You already have this!"
 					: pebbles.value >= item.price
 						? "Buy Now!"
