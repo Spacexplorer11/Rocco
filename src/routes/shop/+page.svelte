@@ -1,6 +1,5 @@
 <script>
 	import { pebbles } from "$lib/handlers/pebbles.svelte";
-	import { EquippableItem, items, Slot } from "$lib/handlers/items.svelte";
 	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
