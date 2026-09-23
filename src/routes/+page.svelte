@@ -29,8 +29,8 @@
 			id="rock-name-input"
 			bind:value={rock.name}
 		/>
-		<label for="rock-name-input" class="text-center text-2xl text-amber-600"
-			>Note - rock name cannot be longer than 30 characters and cannot be blank</label
+		<label for="rock-name-input" class="text-center text-2xl text-black p-3 rounded-2xl mt-4 bg-gray-500"
+			>Note - your rock name cannot be longer than <strong>30 characters</strong> and cannot be blank</label
 		>
 
 		{#if rock.name.trim().length > 0}
