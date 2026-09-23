@@ -44,16 +44,16 @@
 	}}>Food</button
 >
 
-<button class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal">
-	<img
-		alt="Rocco!"
-		src="images/rocco.png"
-		onclick={() => {
-			if (rock.happiness.affection < 100) {
-				rock.happiness.affection += 1;
-			}
-		}}
-	/>
+<button
+	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
+	onclick={() => {
+		if (rock.happiness.affection < 100) {
+			rock.happiness.affection += 1;
+		}
+	}}
+	aria-label="Rocco"
+>
+	<enhanced:img alt="Rocco!" src="$lib/images/rocco.png" />
 </button>
 
 <div class="flex flex-row">
@@ -71,7 +71,7 @@
 		onclick={() => goto("/settings")}
 		>Settings
 	</button>
-	class="mt-[25mv] mr-[37vw] mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-center" >Pebbles
+	class="mt-[25mv] mr-[37vw] mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-center"> Pebbles
 	= {pebbles.value}
 	<button
 		class="mt-[25mv] mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"

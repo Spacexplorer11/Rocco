@@ -27,7 +27,8 @@
 			pebbles.value -= 5;
 		}
 	}}
+	aria-label="Top Hat"
 >
-	<img alt="Top Hat" src="images/top-hat.png" />
+	<enhanced:img alt="Top Hat" src="$lib/images/top-hat.png" />
 </button>
 <p class="text-center text-3xl text-black">Top Hat - 30 pebbles</p>
