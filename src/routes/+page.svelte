@@ -2,6 +2,7 @@
 	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
+	import { CircleCheckBig } from "@lucide/svelte";
 
 	onMount(() => {
 		load_rock();
@@ -34,13 +35,13 @@
 
 		{#if rock.name.trim().length > 0}
 			<button
-				class="m-20 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center text-2xl text-blue-800"
+				class="m-20 flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center text-2xl text-blue-800"
 				onclick={() => {
 					rock.happiness.total = 100;
 					rock.happiness.affection = 100;
 					rock.happiness.nutrition = 100;
 					goto("/home");
-				}}>Confirm?</button
+				}}>Confirm? <CircleCheckBig class="my-1.5 ml-2 text-center" /></button
 			>
 		{/if}
 	</div>
