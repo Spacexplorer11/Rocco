@@ -3,6 +3,7 @@
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png";
+	import { Settings, Store } from "@lucide/svelte";
 
 	onMount(() => {
 		load_rock();
@@ -59,11 +60,11 @@
 
 <div class="flex flex-row">
 	<button
-		class="mt-25 mr-[83vw] ml-[1vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/shop")}>Go to shop</button
+		class="flex flex-row mt-25 mr-[83vw] ml-[1vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
+		onclick={() => goto("/shop")}><Store class="mr-1"/>Go to shop</button
 	>
 	<button
-		class="mt-25 mr-[1vw] mb-auto rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
-		onclick={() => goto("/settings")}>Settings</button
+		class="flex flex-row mt-25 mr-[1vw] mb-auto rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		onclick={() => goto("/settings")}><Settings class="mr-1"/>Settings</button
 	>
 </div>

@@ -93,7 +93,6 @@
 		font-family: "National Park", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 600;
-		font-style: oblique;
 	}
 
 	#background {
