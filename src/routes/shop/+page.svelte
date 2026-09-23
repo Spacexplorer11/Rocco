@@ -4,6 +4,7 @@
 	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
+	import { Undo2 } from '@lucide/svelte';
 
 	onMount(() => {
 		load_rock();
@@ -25,8 +26,8 @@
 
 <header class="mb-10 flex flex-row">
 	<button
-		class="left-3 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/home")}>Back</button
+		class="flex flex-row left-3 rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
+		onclick={() => goto("/home")}><Undo2 />Back</button
 	>
 	<h1 class="mx-auto text-center text-5xl text-black">Shop: You have {pebbles.value} pebbles</h1>
 </header>
