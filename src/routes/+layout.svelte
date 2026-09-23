@@ -6,7 +6,7 @@
 	import { onMount } from "svelte";
 	import possible_items from "$lib/items/possible_items.json";
 	import { decrease_affection, decrease_nutrition, load_rock, rock, save_rock } from "$lib/handlers/rock.svelte";
-	import background from "$lib/assets/background.png";
+	import background from "$lib/assets/background.png?enhanced";
 
 	let { children } = $props();
 
