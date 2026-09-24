@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
+	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png?enhanced";
 	import { Settings, Store } from "@lucide/svelte";
@@ -48,12 +49,12 @@
 
 <button
 	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
-	title="Your rock {rock.name}"
 	onclick={() => {
 		if (rock.happiness.affection < 100) {
 			rock.happiness.affection += 1;
 		}
 	}}
+	aria-label="Rocco"
 >
 	<enhanced:img alt="Rocco!" src={rocco} />
 </button>
@@ -63,6 +64,8 @@
 		class="mt-25 mr-[83vw] ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
 		onclick={() => goto("/shop")}><Store class="mr-1" />Go to shop</button
 	>
+		Pebbles = {pebbles.value}
+	</p>
 	<button
 		class="mt-25 mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
 		onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
