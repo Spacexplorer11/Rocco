@@ -1,6 +1,5 @@
 <script>
 	import { pebbles } from "$lib/handlers/pebbles.svelte";
-	import { EquippableItem, items, Slot } from "$lib/handlers/items.svelte";
 	import { load_rock, rock } from "$lib/handlers/rock.svelte";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
@@ -22,13 +21,12 @@
 
 <button
 	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
-	title="Top Hat"
 	onclick={() => {
-		if (pebbles.value >= 30) {
-			pebbles.value -= 30;
-			items.bought_items.push(new EquippableItem("top_hat", "Top Hat", 30, Slot.Head, "$lib/images/top-hat.png"));
+		if (pebbles.value > 5) {
+			pebbles.value -= 5;
 		}
 	}}
+	aria-label="Top Hat"
 >
 	<enhanced:img alt="Top Hat" src="$lib/images/top-hat.png" />
 </button>

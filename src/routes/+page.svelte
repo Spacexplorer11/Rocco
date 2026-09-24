@@ -14,9 +14,15 @@
 <h1 class="text-center text-5xl text-gray-700">Rocco</h1>
 <h2 class="text-center text-3xl text-amber-900">Your little friend that rocks!</h2>
 
-<h3 class="p-40 text-center text-4xl text-white hover:animate-pulse">
+<h3 class="p-30 text-center text-4xl text-white hover:animate-pulse">
 	Welcome to Rocco! What would you like to name your pet rock?
 </h3>
+
+<button
+	class=" justify-right mx-auto ml-[5mv] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] object-bottom-right p-5 text-right"
+	onclick={() => goto("/guide")}
+	>Guide
+</button>
 
 <div class=" mx-auto flex flex-col items-center justify-center text-center">
 	<input
