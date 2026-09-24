@@ -4,7 +4,7 @@
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png?enhanced";
-	import { Settings, Store } from "@lucide/svelte";
+	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 
 	onMount(() => {
 		load_rock();
@@ -15,7 +15,7 @@
 </script>
 
 <header>
-	<h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name}</h1>
+	<h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name} - {pebbles.value} pebbles</h1>
 	<div class="flex flex-row justify-between">
 		<div class="flex w-full flex-col items-center">
 			<span class="mb-2 text-center text-3xl text-yellow-400">Happiness = {rock.happiness.total}</span>
@@ -59,16 +59,17 @@
 	<enhanced:img alt="Rocco!" src={rocco} />
 </button>
 
-<div class="mt-25 flex flex-row justify-between">
+<nav class="mt-25 flex flex-row justify-between">
 	<button
 		class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/shop")}><Store class="mr-1" />Go to shop</button
+		onclick={() => goto("/inventory")}><ShelvingUnit class="mr-1" />Inventory</button
 	>
-	<p class=" mb-auto ml-[1vw] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-center">
-		Pebbles = {pebbles.value}
-	</p>
+	<button
+		class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"
+		onclick={() => goto("/shop")}><Store class="mr-1" />Shop</button
+	>
 	<button
 		class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
 		onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
 	>
-</div>
+</nav>

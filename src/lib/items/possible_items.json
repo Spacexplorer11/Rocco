@@ -2,7 +2,7 @@
 	{
 		"id": "top-hat",
 		"name": "Top Hat",
-		"price": 15,
+		"price": 5,
 		"slot": "0",
 		"asset_path": "/images/items/top-hat.webp"
 	}

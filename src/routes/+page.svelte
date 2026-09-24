@@ -21,11 +21,11 @@
 	<h3 class="p-40 text-center text-4xl text-white hover:animate-pulse">
 		Welcome to Rocco! What would you like to name your pet rock?
 	</h3>
-<button
-	class=" justify-right mx-auto ml-[5mv] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] object-bottom-right p-5 text-right"
-	onclick={() => goto("/guide")}
-	>Guide
-</button>
+	<button
+		class=" justify-right mx-auto ml-[5mv] rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] object-bottom-right p-5 text-right"
+		onclick={() => goto("/guide")}
+		>Guide
+	</button>
 
 	<div class=" mx-auto flex flex-col items-center justify-center text-center">
 		<input
@@ -35,7 +35,8 @@
 			bind:value={rock.name}
 		/>
 		<label for="rock-name-input" class="mt-4 rounded-2xl bg-gray-500 p-3 text-center text-2xl text-black"
-			>Note - your rock name cannot be longer than <strong>30 characters</strong> and cannot be blank</label>
+			>Note - your rock name cannot be longer than <strong>30 characters</strong> and cannot be blank</label
+		>
 
 		{#if rock.name.trim().length > 0}
 			<button
