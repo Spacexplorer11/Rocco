@@ -32,6 +32,7 @@
 		"wrangler": "4.132.0"
 	},
 	"dependencies": {
+		"@lucide/svelte": "^1.47.0",
 		"@sveltejs/adapter-cloudflare": "^7.2.9"
 	}
 }

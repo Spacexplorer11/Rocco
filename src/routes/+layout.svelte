@@ -6,63 +6,11 @@
 	import { onMount } from "svelte";
 	import possible_items from "$lib/items/possible_items.json";
 	import { decrease_affection, decrease_nutrition, load_rock, rock, save_rock } from "$lib/handlers/rock.svelte";
+	import background from "$lib/assets/background.png?enhanced";
 
 	let { children } = $props();
 
-	$effect(() => {
-		if (typeof window === "undefined") return;
-		if (typeof localStorage === "undefined") return;
-		try {
-			localStorage.setItem("pebbles", String(pebbles.value));
-			console.log("Successfully saved pebbles as ", pebbles.value);
-		} catch (error) {
-			console.error("An error occurred when saving the pebbles value: ", error);
-		}
-	});
-
-	$effect(() => {
-		if (typeof window === "undefined") return;
-		if (typeof localStorage === "undefined") return;
-		try {
-			localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
-			console.log(`Saved bought items: [${items.bought_items.map((item) => item.getPrettyStringified()).join(",")}]`);
-		} catch (error) {
-			console.error("An error occurred when saving the bought items: ", error);
-		}
-	});
-
-	$effect(() => {
-		if (typeof window === "undefined") return;
-		if (typeof localStorage === "undefined") return;
-		try {
-			localStorage.setItem("equipped_items", JSON.stringify(items.equipped_items));
-			console.log(
-				`Saved equipped items: [${items.equipped_items.map((item) => item.getPrettyStringified()).join(",")}]`
-			);
-		} catch (error) {
-			console.error("An error occurred when saving the equipped items: ", error);
-		}
-	});
-
-	$effect(() => {
-		rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
-	});
-
-	$effect(() => {
-		save_rock();
-	});
-
 	onMount(() => {
-		const affectionInterval = setInterval(decrease_affection, 5000);
-		const nutritionInterval = setInterval(decrease_nutrition, 7500);
-		const pebblesInterval = setInterval(increase_pebbles, 20000);
-		return () => {
-			clearInterval(affectionInterval);
-			clearInterval(nutritionInterval);
-			clearInterval(pebblesInterval);
-		};
-	});
-	onMount(async () => {
 		load_rock();
 		load_pebbles();
 		load_bought_items();
@@ -75,13 +23,59 @@
 		console.log(
 			`Loaded possible items: [${items.possible_items.map((item) => item.getPrettyStringified()).join(",")}]`
 		);
+		const affectionInterval = setInterval(decrease_affection, 5000);
+		const nutritionInterval = setInterval(decrease_nutrition, 7500);
+		const pebblesInterval = setInterval(increase_pebbles, 20000);
+		$effect(() => {
+			try {
+				localStorage.setItem("pebbles", String(pebbles.value));
+				console.log("Successfully saved pebbles as ", $state.snapshot(pebbles.value));
+			} catch (error) {
+				console.error("An error occurred when saving the pebbles value: ", error);
+			}
+		});
+
+		$effect(() => {
+			try {
+				localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
+				console.log(
+					`Saved bought items: [${$state.snapshot(items.bought_items.map((item) => item.getPrettyStringified()).join(","))}]`
+				);
+			} catch (error) {
+				console.error("An error occurred when saving the bought items: ", error);
+			}
+		});
+
+		$effect(() => {
+			try {
+				localStorage.setItem("equipped_items", JSON.stringify(items.equipped_items));
+				console.log(
+					`Saved equipped items: [${$state.snapshot(items.equipped_items.map((item) => item.getPrettyStringified()).join(","))}]`
+				);
+			} catch (error) {
+				console.error("An error occurred when saving the equipped items: ", error);
+			}
+		});
+
+		$effect(() => {
+			rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
+		});
+
+		$effect(() => {
+			save_rock();
+		});
+		return () => {
+			clearInterval(affectionInterval);
+			clearInterval(nutritionInterval);
+			clearInterval(pebblesInterval);
+		};
 	});
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div id="national-park">
-	<enhanced:img src="$lib/images/background.png" alt="" id="background" sizes="100vw" />
+	<enhanced:img src={background} alt="" id="background" sizes="100vw" />
 	{@render children()}
 </div>
 
@@ -92,7 +86,6 @@
 		font-family: "National Park", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 600;
-		font-style: oblique;
 	}
 
 	#background {

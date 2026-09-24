@@ -26,7 +26,7 @@ export function save_rock() {
 	if (typeof localStorage === "undefined") return;
 	try {
 		localStorage.setItem("rock", JSON.stringify(rock));
-		console.log("Successfully saved rock as ", rock);
+		console.log("Successfully saved rock as ", $state.snapshot(rock));
 	} catch (error) {
 		console.error("An error occurred when saving the rock name");
 	}

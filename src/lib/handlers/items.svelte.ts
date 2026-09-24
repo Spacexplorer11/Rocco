@@ -22,6 +22,16 @@ export class EquippableItem {
 		return `{ id: ${this.id}, name: ${this.name}, price: ${this.price}, slot: ${this.slot}, asset_path: ${this.asset_path} }`;
 	}
 
+	/// Checks if a list includes a specific EquippableItem by comparing item ids.
+	static includes(list: EquippableItem[], item: EquippableItem): boolean {
+		for (const list_item of list) {
+			if (list_item.id === item.id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	static fromJSON(JSON: any): EquippableItem {
 		let slot = JSON["slot"];
 		if (typeof slot === "number") slot = String(slot);
