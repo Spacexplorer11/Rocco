@@ -62,7 +62,7 @@
 <nav class="mt-25 flex flex-row justify-between">
 	<button
 		class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/shop")}><ShelvingUnit class="mr-1" />Inventory</button
+		onclick={() => goto("/inventory")}><ShelvingUnit class="mr-1" />Inventory</button
 	>
 	<button
 		class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"

@@ -26,7 +26,7 @@
 			<button
 				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center"
 				id={item.id}
-				title="Buy {item.name} for {item.price} pebbles"
+				title="{EquippableItem.includes(items.equipped_items, item) ? 'Unequip' : 'Equip'} {item.name}"
 				onclick={() => {
 					if (EquippableItem.includes(items.equipped_items, item)) {
 						items.equipped_items = items.equipped_items.filter((value) => value.id !== item.id);
