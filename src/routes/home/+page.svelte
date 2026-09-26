@@ -56,8 +56,8 @@
 				><enhanced:img
 					src={affectionFrames[affectionFrameIndex]}
 					alt="heart symbol"
-					width="36px"
-					height="36px"
+					class="h-9 w-9"
+					style="image-rendering: pixelated;"
 					sizes="36px"
 				/>Affection = {rock.happiness.affection}</span
 			>
