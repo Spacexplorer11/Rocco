@@ -1,6 +1,5 @@
 <script lang="ts">
 	import "./layout.css";
-	import favicon from "$lib/assets/favicon.svg";
 	import { pebbles, load_pebbles, increase_pebbles } from "$lib/handlers/pebbles.svelte";
 	import { EquippableItem, items, load_bought_items, load_equipped_items } from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
@@ -71,8 +70,6 @@
 		};
 	});
 </script>
-
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div id="national-park">
 	<enhanced:img src={background} alt="background of greenery" id="background" sizes="100vw" />
