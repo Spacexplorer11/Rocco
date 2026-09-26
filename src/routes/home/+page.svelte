@@ -5,15 +5,19 @@
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
+	import type { Picture } from "@sveltejs/enhanced-img";
 
 	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
-		import: "default"
+		import: "default",
+		query: {
+			enhanced: true
+		}
 	});
 
 	const affectionFrames = Object.entries(affectionModules)
 		.sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
-		.map(([url]) => url);
+		.map(([, picture]) => picture as Picture);
 
 	let affectionFrameIndex = $derived(
 		Math.min(
@@ -54,6 +58,7 @@
 					alt="heart symbol"
 					width="36px"
 					height="36px"
+					sizes="36px"
 				/>Affection = {rock.happiness.affection}</span
 			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
