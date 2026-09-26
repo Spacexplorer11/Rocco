@@ -75,7 +75,7 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div id="national-park">
-	<enhanced:img src={background} alt="" id="background" sizes="100vw" />
+	<enhanced:img src={background} alt="background of greenery" id="background" sizes="100vw" />
 	{@render children()}
 </div>
 

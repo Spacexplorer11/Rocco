@@ -4,6 +4,7 @@
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png?enhanced";
+	import symbol_of_affection from "$lib/assets/symbols/affection.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 
 	onMount(() => {
@@ -32,7 +33,10 @@
 			</div>
 		</div>
 		<div class="flex w-full flex-col items-center">
-			<span class="mb-2 text-center text-3xl text-pink-600">Affection = {rock.happiness.affection}</span>
+			<span class="mb-2 flex flex-row text-center text-3xl text-pink-600"
+				><enhanced:img src={symbol_of_affection} alt="heart symbol" width="36px" />Affection = {rock.happiness
+					.affection}</span
+			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
 				<div class="h-full bg-pink-600" style="width: {rock.happiness.affection}%;"></div>
 			</div>
