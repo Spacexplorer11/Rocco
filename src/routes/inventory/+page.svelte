@@ -43,5 +43,9 @@
 				{EquippableItem.includes(items.equipped_items, item) ? "Unequip" : "Equip"}
 			</button>
 		</div>
+	{:else}
+		<h3 class="absolute top-[50vh] left-[23vw] text-center text-3xl text-black">
+			You haven't got any items yet, go to the <a href="/shop" class="text-yellow-500 underline">shop</a> to get some!
+		</h3>
 	{/each}
 </main>
