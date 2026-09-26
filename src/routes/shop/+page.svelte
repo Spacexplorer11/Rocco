@@ -25,6 +25,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Rocco - Shop - Buy a plethora of cool items for your rock!</title>
+	<meta
+		name="description"
+		content="View our extensive catalogue to find loads of cool looking hand-drawn items for your rock to wear! (Coming soon!)"
+	/>
+</svelte:head>
+
 <header class="mb-10 flex flex-row">
 	<button
 		class="left-3 flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"

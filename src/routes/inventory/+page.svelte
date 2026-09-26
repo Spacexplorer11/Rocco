@@ -4,6 +4,11 @@
 	import { Undo2 } from "@lucide/svelte";
 </script>
 
+<svelte:head>
+	<title>Rocco - Inventory - View everything you own</title>
+	<meta name="description" content="View every item you own and equip/unequip it! (Coming soon!)" />
+</svelte:head>
+
 <header class="mb-10 flex flex-row">
 	<button
 		class="left-3 flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"

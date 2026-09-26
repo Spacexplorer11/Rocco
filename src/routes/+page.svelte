@@ -12,6 +12,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Rocco - An easy-to-play pet rock game!</title>
+	<meta
+		name="description"
+		content="A pet rock game with simple stats, extensive catalogue and beautifully hand drawn assets! (Coming soon!)"
+	/>
+</svelte:head>
+
 <header>
 	<h1 class="text-center text-5xl text-gray-700">Rocco</h1>
 	<h2 class="text-center text-3xl text-amber-900">Your little friend that rocks!</h2>

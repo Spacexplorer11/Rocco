@@ -14,6 +14,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Rocco - Homepage - Keep your rock happy!</title>
+	<meta
+		name="description"
+		content="Feed or pet your rock to keep it happy and earn a pebble every 20s its more than 95% happy!"
+	/>
+</svelte:head>
+
 <header>
 	<h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name} - {pebbles.value} pebbles</h1>
 	<div class="flex flex-row justify-between">

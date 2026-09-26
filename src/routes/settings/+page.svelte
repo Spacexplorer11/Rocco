@@ -12,6 +12,11 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Rocco - Settings - Customise your experience in Rocco</title>
+	<meta name="description" content="Customise your experience in Rocco! (More features coming soon!)" />
+</svelte:head>
+
 <nav class="mb-10 flex flex-row">
 	<button
 		class="left-3 flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
