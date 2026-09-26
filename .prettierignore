@@ -10,3 +10,6 @@ bun.lockb
 
 # Wrangler
 worker-configuration.d.ts
+
+# Images???
+*.png

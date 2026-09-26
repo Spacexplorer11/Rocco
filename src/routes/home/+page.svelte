@@ -4,8 +4,23 @@
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png?enhanced";
-	import symbol_of_affection from "$lib/assets/symbols/affection.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
+
+	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
+		eager: true,
+		import: "default"
+	});
+
+	const affectionFrames = Object.entries(affectionModules)
+		.sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+		.map(([url]) => url);
+
+	let affectionFrameIndex = $derived(
+		Math.min(
+			affectionFrames.length - 1,
+			Math.floor((affectionFrames.length - 1) * (1 - rock.happiness.affection / 100))
+		)
+	);
 
 	onMount(() => {
 		load_rock();
@@ -34,8 +49,12 @@
 		</div>
 		<div class="flex w-full flex-col items-center">
 			<span class="mb-2 flex flex-row text-center text-3xl text-pink-600"
-				><enhanced:img src={symbol_of_affection} alt="heart symbol" width="36px" />Affection = {rock.happiness
-					.affection}</span
+				><enhanced:img
+					src={affectionFrames[affectionFrameIndex]}
+					alt="heart symbol"
+					width="36px"
+					height="36px"
+				/>Affection = {rock.happiness.affection}</span
 			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
 				<div class="h-full bg-pink-600" style="width: {rock.happiness.affection}%;"></div>
