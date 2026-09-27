@@ -6,7 +6,7 @@
 
 <svelte:head>
 	<title>Rocco - Inventory - View everything you own</title>
-	<meta name="description" content="View every item you own and equip/unequip it! (Coming soon!)" />
+	<meta name="description" content="View every item you own and equip/unequip it!" />
 </svelte:head>
 
 <header class="mb-10 flex flex-row">
