@@ -42,7 +42,7 @@ export function load_rock() {
 			rock.name = parsed["name"];
 			rock.happiness.affection = parsed["happiness"]["affection"];
 			rock.happiness.nutrition = parsed["happiness"]["nutrition"];
-			rock.happiness.total = parsed["happiness"]["total"];
+			rock.happiness.total = Math.max(Math.min(100, parsed["happiness"]["total"]), 0);
 			console.log("Successfully loaded rock as ", JSON.stringify(rock));
 		}
 	} catch (error) {

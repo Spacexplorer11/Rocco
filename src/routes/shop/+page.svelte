@@ -6,6 +6,18 @@
 	import { onMount } from "svelte";
 	import { Undo2 } from "@lucide/svelte";
 	import { EquippableItem } from "$lib/handlers/items.svelte.ts";
+	import type { Picture } from "@sveltejs/enhanced-img";
+	const itemModules = import.meta.glob("$lib/assets/items/*.png", {
+		eager: true,
+		import: "default",
+		query: {
+			enhanced: true
+		}
+	});
+
+	const itemImages = new Map(
+		Object.entries(itemModules).map(([url, picture]) => [url.split("/").pop()!.replace(".png", ""), picture as Picture])
+	);
 
 	onMount(() => {
 		load_rock();
@@ -29,7 +41,7 @@
 	<title>Rocco - Shop - Buy a plethora of cool items for your rock!</title>
 	<meta
 		name="description"
-		content="View our extensive catalogue to find loads of cool looking hand-drawn items for your rock to wear! (Coming soon!)"
+		content="View our extensive catalogue to find loads of cool looking hand-drawn items for your rock to wear!"
 	/>
 </svelte:head>
 
@@ -43,13 +55,13 @@
 
 <main class="m-2 grid grid-cols-3 gap-3">
 	{#each items.possible_items as item (item.id)}
-		<div class="@container flex flex-col">
+		<div class="@container my-4 flex flex-col items-center">
 			<h2 class="text-center text-3xl text-black">{item.name} - {item.price} pebbles</h2>
-			<img
-				class="m-10 mx-auto mt-40 justify-center whitespace-normal"
+			<enhanced:img
+				class="m-10 mx-auto mt-20 justify-center whitespace-normal"
 				alt={item.name}
 				title={item.name}
-				src={item.asset_path}
+				src={itemImages.get(item.id)!}
 			/>
 			<button
 				class="mx-auto justify-center rounded-4xl p-4 text-center active:bg-linear-to-r active:from-[#63A46C] active:to-[#16DB93] disabled:cursor-not-allowed disabled:bg-gray-400"

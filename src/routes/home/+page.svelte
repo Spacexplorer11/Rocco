@@ -3,10 +3,11 @@
 	import { goto } from "$app/navigation";
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
-	import rocco from "$lib/assets/rocco.png?enhanced";
+	import { happy_rocco, sad_rocco, angry_rocco } from "$lib/assets/rocco";
 	import symbol_of_nutrition from "$lib/assets/symbols/nutrition.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
+	import foodicon from "$lib/assets/symbols/food-icon.png?enhanced";
 
 	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
@@ -26,6 +27,38 @@
 			Math.floor((affectionFrames.length - 1) * (1 - rock.happiness.affection / 100))
 		)
 	);
+
+	const happinessModules = import.meta.glob("$lib/assets/symbols/happiness-frames/*.png", {
+		eager: true,
+		import: "default",
+		query: {
+			enhanced: true
+		}
+	});
+
+	const happinessFrames = Object.entries(happinessModules)
+		.sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+		.map(([, picture]) => picture as Picture);
+
+	let happinessFrameIndex = $derived.by(() => {
+		if (rock.happiness.total <= 0) {
+			return 11;
+		}
+		if (rock.happiness.total > 90) {
+			return Math.min(9, Math.round(100 - rock.happiness.total));
+		}
+		return 10;
+	});
+
+	let rocco_state = $derived.by(() => {
+		if (rock.happiness.total > 95) {
+			return happy_rocco;
+		} else if (rock.happiness.total > 0 && rock.happiness.total <= 95) {
+			return sad_rocco;
+		} else {
+			return angry_rocco;
+		}
+	});
 
 	onMount(() => {
 		load_rock();
@@ -47,7 +80,15 @@
 	<h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name} - {pebbles.value} pebbles</h1>
 	<div class="flex flex-row justify-between">
 		<div class="flex w-full flex-col items-center">
-			<span class="mb-2 text-center text-3xl text-yellow-400">Happiness = {rock.happiness.total}</span>
+			<span class="mb-2 flex flex-row text-center text-3xl text-yellow-400">
+				<enhanced:img
+					src={happinessFrames[happinessFrameIndex]}
+					alt="happiness symbol"
+					class="mr-2 h-9 w-9"
+					style="image-rendering: pixelated;"
+					sizes="36px"
+				/>Happiness = {rock.happiness.total}</span
+			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
 				<div class="h-full bg-yellow-400" style="width: {rock.happiness.total}%;"></div>
 			</div>
@@ -81,12 +122,19 @@
 				<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
 			</div>
 			<button
-				class="max-w-fit rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-3xl"
+				class=" flex max-w-fit flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-3xl"
 				onclick={() => {
 					if (rock.happiness.nutrition < 100) {
 						rock.happiness.nutrition += 1;
 					}
-				}}>Food</button
+				}}
+				><enhanced:img
+					src={foodicon}
+					alt="strawberry"
+					class="h-9 w-9"
+					style="image-rendering: pixelated;"
+					sizes="36px"
+				/>Food</button
 			>
 		</div>
 	</div>
@@ -101,7 +149,7 @@
 	}}
 	aria-label="Rocco"
 >
-	<enhanced:img alt="Rocco!" src={rocco} />
+	<enhanced:img alt="Rocco!" src={rocco_state} sizes="min(1536px, 100vw)" />
 </button>
 
 <nav class="mt-25 flex flex-row justify-between">
