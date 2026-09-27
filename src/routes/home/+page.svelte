@@ -27,6 +27,28 @@
 		)
 	);
 
+	const happinessModules = import.meta.glob("$lib/assets/symbols/happiness-frames/*.png", {
+		eager: true,
+		import: "default",
+		query: {
+			enhanced: true
+		}
+	});
+
+	const happinessFrames = Object.entries(happinessModules)
+		.sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+		.map(([, picture]) => picture as Picture);
+
+	let happinessFrameIndex = $derived.by(() => {
+		if (rock.happiness.total <= 0) {
+			return 11;
+		}
+		if (rock.happiness.total > 90) {
+			return Math.min(9, Math.round(100 - rock.happiness.total));
+		}
+		return 10;
+	});
+
 	let rocco_state = $derived.by(() => {
 		if (rock.happiness.total > 95) {
 			return happy_rocco;
@@ -57,7 +79,15 @@
 	<h1 class=" flex flex-row justify-center text-center text-4xl text-black">{rock.name} - {pebbles.value} pebbles</h1>
 	<div class="flex flex-row justify-between">
 		<div class="flex w-full flex-col items-center">
-			<span class="mb-2 text-center text-3xl text-yellow-400">Happiness = {rock.happiness.total}</span>
+			<span class="mb-2 flex flex-row text-center text-3xl text-yellow-400">
+				<enhanced:img
+					src={happinessFrames[happinessFrameIndex]}
+					alt="happiness symbol"
+					class="mr-2 h-9 w-9"
+					style="image-rendering: pixelated;"
+					sizes="36px"
+				/>Happiness = {rock.happiness.total}</span
+			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
 				<div class="h-full bg-yellow-400" style="width: {rock.happiness.total}%;"></div>
 			</div>

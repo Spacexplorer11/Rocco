@@ -25,49 +25,50 @@
 		const affectionInterval = setInterval(decrease_affection, 5000);
 		const nutritionInterval = setInterval(decrease_nutrition, 7500);
 		const pebblesInterval = setInterval(increase_pebbles, 20000);
-		$effect(() => {
-			try {
-				localStorage.setItem("pebbles", String(pebbles.value));
-				console.log("Successfully saved pebbles as ", $state.snapshot(pebbles.value));
-			} catch (error) {
-				console.error("An error occurred when saving the pebbles value: ", error);
-			}
-		});
-
-		$effect(() => {
-			try {
-				localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
-				console.log(
-					`Saved bought items: [${$state.snapshot(items.bought_items.map((item) => item.getPrettyStringified()).join(","))}]`
-				);
-			} catch (error) {
-				console.error("An error occurred when saving the bought items: ", error);
-			}
-		});
-
-		$effect(() => {
-			try {
-				localStorage.setItem("equipped_items", JSON.stringify(items.equipped_items));
-				console.log(
-					`Saved equipped items: [${$state.snapshot(items.equipped_items.map((item) => item.getPrettyStringified()).join(","))}]`
-				);
-			} catch (error) {
-				console.error("An error occurred when saving the equipped items: ", error);
-			}
-		});
-
-		$effect(() => {
-			rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
-		});
-
-		$effect(() => {
-			save_rock();
-		});
 		return () => {
 			clearInterval(affectionInterval);
 			clearInterval(nutritionInterval);
 			clearInterval(pebblesInterval);
 		};
+	});
+
+	$effect(() => {
+		try {
+			localStorage.setItem("pebbles", String(pebbles.value));
+			console.log("Successfully saved pebbles as ", $state.snapshot(pebbles.value));
+		} catch (error) {
+			console.error("An error occurred when saving the pebbles value: ", error);
+		}
+	});
+
+	$effect(() => {
+		try {
+			localStorage.setItem("bought_items", JSON.stringify(items.bought_items));
+			console.log(
+				`Saved bought items: [${$state.snapshot(items.bought_items.map((item) => item.getPrettyStringified()).join(","))}]`
+			);
+		} catch (error) {
+			console.error("An error occurred when saving the bought items: ", error);
+		}
+	});
+
+	$effect(() => {
+		try {
+			localStorage.setItem("equipped_items", JSON.stringify(items.equipped_items));
+			console.log(
+				`Saved equipped items: [${$state.snapshot(items.equipped_items.map((item) => item.getPrettyStringified()).join(","))}]`
+			);
+		} catch (error) {
+			console.error("An error occurred when saving the equipped items: ", error);
+		}
+	});
+
+	$effect(() => {
+		rock.happiness.total = (rock.happiness.affection + rock.happiness.nutrition) / 2;
+	});
+
+	$effect(() => {
+		save_rock();
 	});
 </script>
 
