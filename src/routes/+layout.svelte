@@ -3,7 +3,7 @@
 	import { pebbles, load_pebbles, increase_pebbles } from "$lib/handlers/pebbles.svelte";
 	import { EquippableItem, items, load_bought_items, load_equipped_items } from "$lib/handlers/items.svelte";
 	import { onMount } from "svelte";
-	import possible_items from "$lib/items/possible_items.json";
+	import possible_items from "$lib/possible_items.json";
 	import { decrease_affection, decrease_nutrition, load_rock, rock, save_rock } from "$lib/handlers/rock.svelte";
 	import background from "$lib/assets/background.png?enhanced";
 
