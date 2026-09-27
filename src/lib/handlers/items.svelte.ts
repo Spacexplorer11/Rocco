@@ -1,6 +1,6 @@
 export enum Slot {
 	Head,
-	Neck
+	Eyes
 }
 
 export class EquippableItem {
@@ -8,18 +8,16 @@ export class EquippableItem {
 	name: string;
 	price: number;
 	slot: Slot;
-	asset_path: string;
 
-	constructor(id: string, name: string, price: number, slot: Slot, asset_path: string) {
+	constructor(id: string, name: string, price: number, slot: Slot) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.slot = slot;
-		this.asset_path = asset_path;
 	}
 
 	getPrettyStringified() {
-		return `{ id: ${this.id}, name: ${this.name}, price: ${this.price}, slot: ${this.slot}, asset_path: ${this.asset_path} }`;
+		return `{ id: ${this.id}, name: ${this.name}, price: ${this.price}, slot: ${this.slot} }`;
 	}
 
 	/// Checks if a list includes a specific EquippableItem by comparing item ids.
@@ -43,12 +41,12 @@ export class EquippableItem {
 				slot = Slot.Head;
 				break;
 			case "1":
-				slot = Slot.Neck;
+				slot = Slot.Eyes;
 				break;
 			default:
 				throw new Error(`Unsupported slot type: ${slot}`);
 		}
-		return new EquippableItem(JSON["id"], JSON["name"], Number(JSON["price"]), slot, JSON["asset_path"]);
+		return new EquippableItem(JSON["id"], JSON["name"], Number(JSON["price"]), slot);
 	}
 }
 

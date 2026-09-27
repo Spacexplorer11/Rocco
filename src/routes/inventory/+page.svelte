@@ -1,7 +1,22 @@
-<script>
+<script lang="ts">
 	import { EquippableItem, items } from "$lib/handlers/items.svelte.ts";
 	import { goto } from "$app/navigation";
 	import { Undo2 } from "@lucide/svelte";
+	import type { Picture } from "@sveltejs/enhanced-img";
+
+	const itemModules = import.meta.glob("$lib/assets/items/*.png", {
+		eager: true,
+		import: "default",
+		query: {
+			enhanced: true
+		}
+	});
+
+	const itemImages = new Map(
+		Object.entries(itemModules).map(([url, picture]) => [url.split("/").pop()!.replace(".png", ""), picture as Picture])
+	);
+
+	console.log([...itemImages.keys()]);
 </script>
 
 <svelte:head>
@@ -22,11 +37,11 @@
 			<h2 class="text-center text-3xl text-black">
 				{item.name}{EquippableItem.includes(items.equipped_items, item) ? " - Equipped" : ""}
 			</h2>
-			<img
+			<enhanced:img
 				class="m-10 mx-auto mt-40 justify-center whitespace-normal"
 				alt={item.name}
 				title={item.name}
-				src={item.asset_path}
+				src={itemImages.get(item.id)!}
 			/>
 			<button
 				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center"

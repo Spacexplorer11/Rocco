@@ -1,30 +1,26 @@
 [
 	{
-		"id": "top_hat",
+		"id": "top-hat",
 		"name": "Top Hat",
 		"price": 15,
-		"slot": "0",
-		"asset_path": "$lib/assets/items/top-hat.png"
+		"slot": "0"
 	},
 	{
-		"id": "stars_glasses",
+		"id": "stars-glasses",
 		"name": "Star Glasses",
 		"price": 35,
-		"slot": "1",
-		"asset_path": "$lib/assets/items/stars.png"
+		"slot": "1"
 	},
 	{
 		"id": "christmas-hat",
 		"name": "Christmas Hat",
 		"price": 15,
-		"slot": "2",
-		"asset_path": "$lib/assets/items/christmas-hat.png"
+		"slot": "0"
 	},
 	{
 		"id": "hearts",
 		"name": "Hearts",
 		"price": 10,
-		"slot": "3",
-		"asset_path": "$lib/assets/items/hearts.png"
+		"slot": "1"
 	}
 ]

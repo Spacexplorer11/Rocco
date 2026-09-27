@@ -3,9 +3,7 @@
 	import { goto } from "$app/navigation";
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
-	import happy_rocco from "$lib/assets/rocco/happy.png?enhanced";
-	import sad_rocco from "$lib/assets/rocco/sad.png?enhanced";
-	import angry_rocco from "$lib/assets/rocco/angry.png?enhanced";
+	import { happy_rocco, sad_rocco, angry_rocco } from "$lib/assets/rocco";
 	import symbol_of_nutrition from "$lib/assets/symbols/nutrition.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
