@@ -7,6 +7,7 @@
 	import symbol_of_nutrition from "$lib/assets/symbols/nutrition.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
+	import foodicon from "$lib/assets/symbols/food-icon.png?enhanced";
 
 	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
@@ -121,12 +122,19 @@
 				<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
 			</div>
 			<button
-				class="max-w-fit rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-3xl"
+				class=" flex max-w-fit flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-3xl"
 				onclick={() => {
 					if (rock.happiness.nutrition < 100) {
 						rock.happiness.nutrition += 1;
 					}
-				}}>Food</button
+				}}
+				><enhanced:img
+					src={foodicon}
+					alt="strawberry"
+					class="h-9 w-9"
+					style="image-rendering: pixelated;"
+					sizes="36px"
+				/>Food</button
 			>
 		</div>
 	</div>
