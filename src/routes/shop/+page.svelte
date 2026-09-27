@@ -29,7 +29,7 @@
 	<title>Rocco - Shop - Buy a plethora of cool items for your rock!</title>
 	<meta
 		name="description"
-		content="View our extensive catalogue to find loads of cool looking hand-drawn items for your rock to wear! (Coming soon!)"
+		content="View our extensive catalogue to find loads of cool looking hand-drawn items for your rock to wear!"
 	/>
 </svelte:head>
 

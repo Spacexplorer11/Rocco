@@ -3,7 +3,10 @@
 	import { goto } from "$app/navigation";
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
-	import rocco from "$lib/assets/rocco.png?enhanced";
+	import happy_rocco from "$lib/assets/rocco/happy.png?enhanced";
+	import sad_rocco from "$lib/assets/rocco/sad.png?enhanced";
+	import angry_rocco from "$lib/assets/rocco/angry.png?enhanced";
+	import symbol_of_nutrition from "$lib/assets/symbols/nutrition.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
 
@@ -25,6 +28,16 @@
 			Math.floor((affectionFrames.length - 1) * (1 - rock.happiness.affection / 100))
 		)
 	);
+
+	let rocco_state = $derived.by(() => {
+		if (rock.happiness.total > 95) {
+			return happy_rocco;
+		} else if (rock.happiness.total > 0 && rock.happiness.total <= 95) {
+			return sad_rocco;
+		} else {
+			return angry_rocco;
+		}
+	});
 
 	onMount(() => {
 		load_rock();
@@ -67,7 +80,15 @@
 			<p class="text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
 		</div>
 		<div class="flex w-full flex-col items-center">
-			<span class="mb-2 text-center text-3xl text-blue-500">Nutrition = {rock.happiness.nutrition}</span>
+			<span class="mb-2 flex flex-row text-center text-3xl text-blue-500"
+				><enhanced:img
+					src={symbol_of_nutrition}
+					alt="knife & fork symbol"
+					class="h-9 w-9"
+					style="image-rendering: pixelated;"
+					sizes="36px"
+				/>Nutrition = {rock.happiness.nutrition}</span
+			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
 				<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
 			</div>
@@ -92,7 +113,7 @@
 	}}
 	aria-label="Rocco"
 >
-	<enhanced:img alt="Rocco!" src={rocco} />
+	<enhanced:img alt="Rocco!" src={rocco_state} sizes="min(1536px, 100vw)" />
 </button>
 
 <nav class="mt-25 flex flex-row justify-between">

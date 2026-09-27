@@ -16,7 +16,7 @@
 	<title>Rocco - An easy-to-play pet rock game!</title>
 	<meta
 		name="description"
-		content="A pet rock game with simple stats, extensive catalogue and beautifully hand drawn assets! (Coming soon!)"
+		content="A pet rock game with simple stats, extensive catalogue and beautifully hand drawn assets!"
 	/>
 </svelte:head>
 
