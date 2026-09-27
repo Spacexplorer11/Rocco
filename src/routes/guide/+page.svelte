@@ -11,6 +11,12 @@
 	2. Click your rock to pet it to gain 1 affection point. <br />
 	3. Keep your rock's happiness above 95 for 20 seconds to get a pebble! <br />
 	4. Spend your pebbles in the shop to buy your rock cool accessories!
+	<br /> <br />
+	Also:<br />
+	Your rock can have different expressions! <br />
+	If your rock is above 95 happiness then your rock will be happy <br />
+	If your rock is from below 95 then it will be sad <br />
+	Be careful if your rock reaches 0 happiness then your rock will get very angry!
 </p>
 
 <button
