@@ -4,6 +4,7 @@
 	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
 	import rocco from "$lib/assets/rocco.png?enhanced";
+	import symbol_of_nutrition from "$lib/assets/symbols/nutrition.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
 
@@ -67,7 +68,15 @@
 			<p class="text-center text-3xl whitespace-normal">Click on the rock to pet it</p>
 		</div>
 		<div class="flex w-full flex-col items-center">
-			<span class="mb-2 text-center text-3xl text-blue-500">Nutrition = {rock.happiness.nutrition}</span>
+			<span class="mb-2 flex flex-row text-center text-3xl text-blue-500"
+				><enhanced:img
+					src={symbol_of_nutrition}
+					alt="knife & fork symbol"
+					class="h-9 w-9"
+					style="image-rendering: pixelated;"
+					sizes="36px"
+				/>Nutrition = {rock.happiness.nutrition}</span
+			>
 			<div class="h-4 w-full max-w-md overflow-hidden rounded-full border-2">
 				<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
 			</div>
