@@ -8,6 +8,7 @@
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
 	import foodicon from "$lib/assets/symbols/food-icon.png?enhanced";
+	import restaurant from "$lib/assets/symbols/restaurant.png";
 
 	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
@@ -165,4 +166,16 @@
 		class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
 		onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
 	>
+	<button
+		class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		onclick={() => goto("/settings")}
+	>
+		<enhanced:img
+			src={restaurant}
+			alt="strawberry"
+			class="h-9 w-9"
+			style="image-rendering: pixelated;"
+			sizes="36px"
+		/>Restaurant
+	</button>
 </nav>
