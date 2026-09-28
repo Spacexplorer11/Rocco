@@ -8,7 +8,7 @@
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
 	import foodicon from "$lib/assets/symbols/food-icon.png?enhanced";
-	import restaurant from "$lib/assets/symbols/restaurant.png";
+	import restaurant from "$lib/assets/symbols/restaurant.png?enhanced";
 
 	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
@@ -132,7 +132,7 @@
 				><enhanced:img
 					src={foodicon}
 					alt="strawberry"
-					class="h-9 w-9"
+					class="h-9 w-9 mr-1"
 					style="image-rendering: pixelated;"
 					sizes="36px"
 				/>Food</button
@@ -155,25 +155,25 @@
 
 <nav class="mt-25 flex flex-row justify-between">
 	<button
-		class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
+		class="mb-auto ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
 		onclick={() => goto("/inventory")}><ShelvingUnit class="mr-1" />Inventory</button
 	>
 	<button
-		class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"
+		class="mb-auto flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"
 		onclick={() => goto("/shop")}><Store class="mr-1" />Shop</button
 	>
 	<button
-		class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+		class="mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
 		onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
 	>
 	<button
 		class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
-		onclick={() => goto("/settings")}
+		onclick={() => goto("/restaurant")}
 	>
 		<enhanced:img
 			src={restaurant}
-			alt="strawberry"
-			class="h-9 w-9"
+			alt="cheese"
+			class="h-9 w-9 mr-1"
 			style="image-rendering: pixelated;"
 			sizes="36px"
 		/>Restaurant
