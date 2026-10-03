@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { load_rock, rock } from "$lib/handlers/rock.svelte";
+	import { load_rock, rock } from "#lib/handlers/rock.svelte.js";
 	import { goto } from "$app/navigation";
-	import { pebbles } from "$lib/handlers/pebbles.svelte.ts";
+	import { pebbles } from "#lib/handlers/pebbles.svelte.ts";
 	import { onMount } from "svelte";
-	import { happy_rocco, sad_rocco, angry_rocco } from "$lib/assets/rocco";
-	import symbol_of_nutrition from "$lib/assets/symbols/nutrition.png?enhanced";
+	import { happy_rocco, sad_rocco, angry_rocco } from "#lib/assets/rocco/index.js";
+	import symbol_of_nutrition from "#lib/assets/symbols/nutrition.png?enhanced";
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
-	import foodicon from "$lib/assets/symbols/food-icon.png?enhanced";
+	import foodicon from "#lib/assets/symbols/food-icon.png?enhanced";
 
-	const affectionModules = import.meta.glob("$lib/assets/symbols/affection-frames/*.png", {
+	const affectionModules = import.meta.glob("#lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
 		import: "default",
 		query: {
@@ -28,7 +28,7 @@
 		)
 	);
 
-	const happinessModules = import.meta.glob("$lib/assets/symbols/happiness-frames/*.png", {
+	const happinessModules = import.meta.glob("#lib/assets/symbols/happiness-frames/*.png", {
 		eager: true,
 		import: "default",
 		query: {

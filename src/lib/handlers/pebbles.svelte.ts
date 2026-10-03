@@ -1,4 +1,4 @@
-import { rock } from "$lib/handlers/rock.svelte";
+import { rock } from "#lib/handlers/rock.svelte.js";
 
 export const pebbles = $state({ value: 0 });
 

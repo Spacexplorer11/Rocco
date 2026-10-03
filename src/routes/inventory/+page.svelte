@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { EquippableItem, items } from "$lib/handlers/items.svelte.ts";
+	import { EquippableItem, items } from "#lib/handlers/items.svelte.ts";
 	import { goto } from "$app/navigation";
 	import { Undo2 } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
 
-	const itemModules = import.meta.glob("$lib/assets/items/*.png", {
+	const itemModules = import.meta.glob("#lib/assets/items/*.png", {
 		eager: true,
 		import: "default",
 		query: {
