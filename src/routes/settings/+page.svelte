@@ -1,5 +1,5 @@
 <script>
-	import { load_rock, rock } from "$lib/handlers/rock.svelte";
+	import { load_rock, rock } from "#lib/handlers/rock.svelte.js";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { Undo2 } from "@lucide/svelte";

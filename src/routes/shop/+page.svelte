@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { pebbles } from "$lib/handlers/pebbles.svelte";
-	import { items } from "$lib/handlers/items.svelte";
-	import { load_rock, rock } from "$lib/handlers/rock.svelte";
+	import { pebbles } from "#lib/handlers/pebbles.svelte.js";
+	import { items } from "#lib/handlers/items.svelte.js";
+	import { load_rock, rock } from "#lib/handlers/rock.svelte.js";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
 	import { Undo2 } from "@lucide/svelte";
-	import { EquippableItem } from "$lib/handlers/items.svelte.ts";
+	import { EquippableItem } from "#lib/handlers/items.svelte.ts";
 	import type { Picture } from "@sveltejs/enhanced-img";
-	const itemModules = import.meta.glob("$lib/assets/items/*.png", {
+	const itemModules = import.meta.glob("#lib/assets/items/*.png", {
 		eager: true,
 		import: "default",
 		query: {
