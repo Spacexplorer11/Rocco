@@ -30,6 +30,16 @@ export class EquippableItem {
 		return false;
 	}
 
+	/// Checks if a list includes a EquippableItem with the same slot type by comparing item slots.
+	static includes_same_slot_type(list: EquippableItem[], item: EquippableItem): boolean {
+		for (const list_item of list) {
+			if (list_item.slot === item.slot) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	static fromJSON(JSON: any): EquippableItem {
 		let slot = JSON["slot"];
 		if (typeof slot === "number") slot = String(slot);

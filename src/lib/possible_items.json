@@ -2,7 +2,7 @@
 	{
 		"id": "top-hat",
 		"name": "Top Hat",
-		"price": 15,
+		"price": 1,
 		"slot": "0"
 	},
 	{
@@ -14,7 +14,7 @@
 	{
 		"id": "christmas-hat",
 		"name": "Christmas Hat",
-		"price": 15,
+		"price": 1,
 		"slot": "0"
 	},
 	{

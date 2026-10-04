@@ -8,6 +8,19 @@
 	import { Settings, ShelvingUnit, Store } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
 	import foodicon from "#lib/assets/symbols/food-icon.png?enhanced";
+	import { items, Slot } from "#lib/handlers/items.svelte.ts";
+
+	const itemModules = import.meta.glob("#lib/assets/items/*.png", {
+		eager: true,
+		import: "default",
+		query: {
+			enhanced: true
+		}
+	});
+
+	const itemImages = new Map(
+		Object.entries(itemModules).map(([url, picture]) => [url.split("/").pop()!.replace(".png", ""), picture as Picture])
+	);
 
 	const affectionModules = import.meta.glob("#lib/assets/symbols/affection-frames/*.png", {
 		eager: true,
@@ -140,29 +153,38 @@
 	</div>
 </header>
 
-<button
-	class="m-10 mx-auto mt-40 flex flex-row justify-center whitespace-normal"
-	onclick={() => {
-		if (rock.happiness.affection < 100) {
-			rock.happiness.affection += 1;
-		}
-	}}
-	aria-label="Rocco"
->
-	<enhanced:img alt="Rocco!" src={rocco_state} sizes="min(1536px, 100vw)" />
-</button>
+<main class="@container flex flex-col items-center">
+	<button
+		class="m-10 mx-auto mt-40 flex flex-col justify-center whitespace-normal"
+		onclick={() => {
+			if (rock.happiness.affection < 100) {
+				rock.happiness.affection += 1;
+			}
+		}}
+		aria-label="Rocco"
+	>
+		{#each items.equipped_items as item}
+			{#if item.slot === Slot.Head}
+				<enhanced:img src={itemImages.get(item.id)!} alt={item.name} class="mx-auto w-[30vw]" />
+			{/if}
+		{/each}
+		<enhanced:img alt="Rocco!" src={rocco_state} sizes="min(1536px, 100vw)" />
+	</button>
+</main>
 
-<nav class="mt-25 flex flex-row justify-between">
-	<button
-		class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/inventory")}><ShelvingUnit class="mr-1" />Inventory</button
-	>
-	<button
-		class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"
-		onclick={() => goto("/shop")}><Store class="mr-1" />Shop</button
-	>
-	<button
-		class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
-		onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
-	>
-</nav>
+<footer>
+	<nav class="mt-25 flex flex-row justify-between">
+		<button
+			class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
+			onclick={() => goto("/inventory")}><ShelvingUnit class="mr-1" />Inventory</button
+		>
+		<button
+			class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"
+			onclick={() => goto("/shop")}><Store class="mr-1" />Shop</button
+		>
+		<button
+			class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+			onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
+		>
+	</nav>
+</footer>

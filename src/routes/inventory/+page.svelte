@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { EquippableItem, items } from "#lib/handlers/items.svelte.ts";
+	import { EquippableItem, items, Slot } from "#lib/handlers/items.svelte.ts";
 	import { goto } from "$app/navigation";
 	import { Undo2 } from "@lucide/svelte";
 	import type { Picture } from "@sveltejs/enhanced-img";
@@ -42,11 +42,17 @@
 				alt={item.name}
 				title={item.name}
 				src={itemImages.get(item.id)!}
+				sizes="30vw"
 			/>
 			<button
-				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center"
+				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center disabled:cursor-not-allowed disabled:bg-gray-400"
 				id={item.id}
-				title="{EquippableItem.includes(items.equipped_items, item) ? 'Unequip' : 'Equip'} {item.name}"
+				title={EquippableItem.includes(items.equipped_items, item)
+					? `Click to unequip ${item.name}`
+					: EquippableItem.includes_same_slot_type(items.equipped_items, item)
+						? `You can't equip this ${item.name}, you already have a another item on your rock's ${item.slot === Slot.Head ? "head" : ""}`
+						: `Click to equip ${item.name}`}
+				disabled={EquippableItem.includes_same_slot_type(items.equipped_items, item)}
 				onclick={() => {
 					if (EquippableItem.includes(items.equipped_items, item)) {
 						items.equipped_items = items.equipped_items.filter((value) => value.id !== item.id);
@@ -55,7 +61,11 @@
 					}
 				}}
 			>
-				{EquippableItem.includes(items.equipped_items, item) ? "Unequip" : "Equip"}
+				{EquippableItem.includes(items.equipped_items, item)
+					? "Unequip"
+					: EquippableItem.includes_same_slot_type(items.equipped_items, item)
+						? `You already have a another item on your rock's ${item.slot === Slot.Head ? "head" : ""}`
+						: "Equip"}
 			</button>
 		</div>
 	{:else}

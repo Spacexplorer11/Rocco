@@ -62,9 +62,10 @@
 				alt={item.name}
 				title={item.name}
 				src={itemImages.get(item.id)!}
+				sizes="30vw"
 			/>
 			<button
-				class="mx-auto justify-center rounded-4xl p-4 text-center active:bg-linear-to-r active:from-[#63A46C] active:to-[#16DB93] disabled:cursor-not-allowed disabled:bg-gray-400"
+				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center disabled:cursor-not-allowed disabled:bg-gray-400"
 				id={item.id}
 				title="Buy {item.name} for {item.price} pebbles"
 				disabled={EquippableItem.includes(items.bought_items, item) || pebbles.value < item.price}
