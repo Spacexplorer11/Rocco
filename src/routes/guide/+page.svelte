@@ -1,8 +1,11 @@
 <script>
-	import { goto } from "$app/navigation";
+	import { Back } from "#lib";
 </script>
 
-<h1 class="text-center text-5xl text-black">Welcome to Rocco!</h1>
+<header>
+	<h1 class="text-center text-5xl text-black">Welcome to Rocco!</h1>
+	<Back />
+</header>
 <p class="p-20 text-center text-4xl text-black">
 	A pet rock simulator where you must take care of your rock by petting it and feeding it to keep it happy! <br />
 	<br /> <br />
@@ -18,8 +21,3 @@
 	If your rock is from below 95 then it will be sad <br />
 	Be careful if your rock reaches 0 happiness then your rock will get very angry!
 </p>
-
-<button
-	class="mt-25 mr-[83vw] ml-[1vw] rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-	onclick={() => goto("/")}>Go back</button
->

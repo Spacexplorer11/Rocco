@@ -1,8 +1,8 @@
 <script>
 	import { load_rock, rock } from "#lib/handlers/rock.svelte.js";
-	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
-	import { Undo2 } from "@lucide/svelte";
+	import { goto } from "$app/navigation";
+	import { Back } from "#lib";
 
 	onMount(() => {
 		load_rock();
@@ -18,10 +18,7 @@
 </svelte:head>
 
 <nav class="mb-10 flex flex-row">
-	<button
-		class="left-3 flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/home")}><Undo2 class="mr-1" />Back</button
-	>
+	<Back />
 </nav>
 
 <div class="text-center">

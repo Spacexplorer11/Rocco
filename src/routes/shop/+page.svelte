@@ -4,9 +4,9 @@
 	import { load_rock, rock } from "#lib/handlers/rock.svelte.js";
 	import { goto } from "$app/navigation";
 	import { onMount } from "svelte";
-	import { Undo2 } from "@lucide/svelte";
 	import { EquippableItem } from "#lib/handlers/items.svelte.ts";
 	import type { Picture } from "@sveltejs/enhanced-img";
+	import { Back } from "#lib";
 	const itemModules = import.meta.glob("#lib/assets/items/*.png", {
 		eager: true,
 		import: "default",
@@ -46,10 +46,7 @@
 </svelte:head>
 
 <header class="mb-10 flex flex-row">
-	<button
-		class="left-3 flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
-		onclick={() => goto("/home")}><Undo2 class="mr-1" />Back</button
-	>
+	<Back />
 	<h1 class="mx-auto text-center text-5xl text-black">Shop: You have {pebbles.value} pebbles</h1>
 </header>
 

@@ -135,7 +135,7 @@
 				<div class="h-full bg-blue-500" style="width: {rock.happiness.nutrition}%;"></div>
 			</div>
 			<button
-				class=" flex max-w-fit flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-3xl"
+				class="flex max-w-fit flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-3xl transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
 				onclick={() => {
 					if (rock.happiness.nutrition < 100) {
 						rock.happiness.nutrition += 1;
@@ -155,7 +155,7 @@
 
 <main class="@container flex flex-col items-center">
 	<button
-		class="m-10 mx-auto mt-40 flex flex-col justify-center whitespace-normal"
+		class="m-10 mx-auto mt-20 flex flex-col justify-center whitespace-normal"
 		onclick={() => {
 			if (rock.happiness.affection < 100) {
 				rock.happiness.affection += 1;
@@ -177,15 +177,15 @@
 <footer>
 	<nav class="mt-25 flex flex-row justify-between">
 		<button
-			class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left"
+			class=" ml-[1vw] flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-left transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
 			onclick={() => goto("/inventory")}><ShelvingUnit class="mr-1" />Inventory</button
 		>
 		<button
-			class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center"
+			class=" flex flex-row rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-5 text-center transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
 			onclick={() => goto("/shop")}><Store class="mr-1" />Shop</button
 		>
 		<button
-			class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right"
+			class="mr-[1vw] mb-auto flex flex-row rounded-4xl bg-linear-to-l from-[#63A46C] to-[#16DB93] p-5 text-right transition-transform duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-2xl"
 			onclick={() => goto("/settings")}><Settings class="mr-1" />Settings</button
 		>
 	</nav>
