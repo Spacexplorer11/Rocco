@@ -45,12 +45,11 @@
 				sizes="30vw"
 			/>
 			<button
-				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center disabled:cursor-not-allowed disabled:bg-gray-400"
-				id={item.id}
+				class="mx-auto justify-center rounded-4xl p-4 text-center not-disabled:bg-linear-to-r not-disabled:from-[#63A46C] not-disabled:to-[#16DB93] disabled:cursor-not-allowed disabled:bg-gray-400"
 				title={EquippableItem.includes(items.equipped_items, item)
 					? `Click to unequip ${item.name}`
 					: EquippableItem.includes_same_slot_type(items.equipped_items, item)
-						? `You can't equip this ${item.name}, you already have a another item on your rock's ${item.slot === Slot.Head ? "head" : ""}`
+						? `You can't equip this ${item.name}, you already have another item on your rock's ${item.slot === Slot.Head ? "head" : ""}`
 						: `Click to equip ${item.name}`}
 				disabled={EquippableItem.includes_same_slot_type(items.equipped_items, item)}
 				onclick={() => {
@@ -64,7 +63,7 @@
 				{EquippableItem.includes(items.equipped_items, item)
 					? "Unequip"
 					: EquippableItem.includes_same_slot_type(items.equipped_items, item)
-						? `You already have a another item on your rock's ${item.slot === Slot.Head ? "head" : ""}`
+						? `You already have another item on your rock's ${item.slot === Slot.Head ? "head" : ""}`
 						: "Equip"}
 			</button>
 		</div>

@@ -30,11 +30,11 @@ export class EquippableItem {
 		return false;
 	}
 
-	/// Checks if a list includes a EquippableItem with the same slot type by comparing item slots.
+	/// Checks if a list includes a EquippableItem with the same slot type by comparing item slots (excludes if it is the same item)
 	static includes_same_slot_type(list: EquippableItem[], item: EquippableItem): boolean {
 		for (const list_item of list) {
 			if (list_item.slot === item.slot) {
-				return true;
+				return list_item.id !== item.id;
 			}
 		}
 		return false;

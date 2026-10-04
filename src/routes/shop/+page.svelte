@@ -53,7 +53,7 @@
 	<h1 class="mx-auto text-center text-5xl text-black">Shop: You have {pebbles.value} pebbles</h1>
 </header>
 
-<main class="m-2 grid grid-cols-3 gap-3">
+<main class="m-2 grid auto-rows-[1fr] grid-cols-3 gap-3">
 	{#each items.possible_items as item (item.id)}
 		<div class="@container my-4 flex flex-col items-center">
 			<h2 class="text-center text-3xl text-black">{item.name} - {item.price} pebbles</h2>
@@ -65,7 +65,7 @@
 				sizes="30vw"
 			/>
 			<button
-				class="mx-auto justify-center rounded-4xl bg-linear-to-r from-[#63A46C] to-[#16DB93] p-4 text-center disabled:cursor-not-allowed disabled:bg-gray-400"
+				class="mx-auto justify-center rounded-4xl p-4 text-center not-disabled:bg-linear-to-r not-disabled:from-[#63A46C] not-disabled:to-[#16DB93] disabled:cursor-not-allowed disabled:bg-gray-400"
 				id={item.id}
 				title="Buy {item.name} for {item.price} pebbles"
 				disabled={EquippableItem.includes(items.bought_items, item) || pebbles.value < item.price}
