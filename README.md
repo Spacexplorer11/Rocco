@@ -23,3 +23,9 @@ You can access it at https://rocco.akaalroop.com!
 2. Run `bun install` or whatever package manager you want.
 3. Run `bun run dev --open` or whatever package manager you want
 4. Now you can see whatever we built!
+
+## FAQ
+<details>
+<summary>Why aren't my cosmetics showing when my rock is angry?</summary>
+This is intended behaviour because your rock is so mad at you it refuses to wear anything.
+</details>
