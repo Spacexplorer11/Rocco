@@ -163,11 +163,13 @@
 		}}
 		aria-label="Rocco"
 	>
-		{#each items.equipped_items as item}
-			{#if item.slot === Slot.Head}
-				<enhanced:img src={itemImages.get(item.id)!} alt={item.name} class="mx-auto w-[30vw]" />
-			{/if}
-		{/each}
+		{#if rock.happiness.total > 0}
+			{#each items.equipped_items as item}
+				{#if item.slot === Slot.Head}
+					<enhanced:img src={itemImages.get(item.id)!} alt={item.name} class="mx-auto w-[30vw]" />
+				{/if}
+			{/each}
+		{/if}
 		<enhanced:img alt="Rocco!" src={rocco_state} sizes="min(1536px, 100vw)" />
 	</button>
 </main>
