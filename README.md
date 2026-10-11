@@ -2,7 +2,8 @@
 
 <img width="1353" height="637" alt="image" src="https://github.com/user-attachments/assets/85985a34-8f7f-40ea-9ac6-8f45dda7b2ed" />
 
-This is a pet rock game created by @spacexplorer11 & @ferboinkles for [Thirdspace](https://thirdspace.hackclub.com).  
+This is a pet rock game created by 
+[@spacexplorer11](https://github.com/spacexplorer11) & [@ferboinkles](https://github.com/ferboinkles) for [Thirdspace](https://thirdspace.hackclub.com).  
 You can access it at https://rocco.akaalroop.com!
 
 ## Time Spent
